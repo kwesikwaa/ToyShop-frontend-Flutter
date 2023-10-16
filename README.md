@@ -1,16 +1,13 @@
-# toyshop
+## toyshop
 
-A new Flutter project.
+# ABODUABA TOYSHOP
 
-## Getting Started
+This is a personal e-commerce project to for my 3D works.
 
-This project is a starting point for a Flutter application.
+Frontend is built with flutter and utilises Hooks, Riverpod, Hive
 
-A few resources to get you started if this is your first Flutter project:
+PayStack for Payment
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+Golang's Fiber on backend
+MongoDB as database
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.

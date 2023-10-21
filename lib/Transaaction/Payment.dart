@@ -19,32 +19,46 @@ class _PaymentState extends State<Payment> {
 
   makePayment() async{
     int price = int.parse(amountCtrl.text) * 100;
+    // ignore: avoid_print
+    print('price is ${price.toString()}');
 
     Charge charge = Charge()
       ..amount = price
       ..reference = 'somereference'
-      ..email = 'email controller'
+      // ..accessCode = 'someaccesscodegoeshere'
+      ..email = 'example@email.com'
       ..currency = 'GHS';
     
     // var paymentmethod = method=='card'?CheckoutMethod.card:CheckoutMethod.bank;
 
     CheckoutResponse res = await plugin.checkout(
       context,
-      method: CheckoutMethod.selectable,
+      method: CheckoutMethod.card,
       charge: charge
     );
 
     if(res.status){
       message = 'Payment was successful. Ref: ${res.reference}';
-      AlertDialog(
-        content: Text(message),
-        actions: [
-          ElevatedButton(child: const Text('OK'),
-            onPressed: (){}, 
-          )
-        ],
-        );
+      successwidget(message);
     }
+  }
+
+  successwidget(String message){
+      Navigator.of(context).push(MaterialPageRoute(builder:(context)=>const Payment()));
+       Navigator.push(context,MaterialPageRoute(builder:(context)=>const Payment()));
+      return showDialog(
+        context: context, 
+        barrierDismissible: false,
+        builder: (BuildContext context){
+          return AlertDialog(
+            content: Text(message),
+            actions: [
+              ElevatedButton(child: const Text('OK'),
+                onPressed: (){ Navigator.pop(context);}, 
+              )
+            ],
+          );
+        });
   }
 
   @override
@@ -82,11 +96,14 @@ class _PaymentState extends State<Payment> {
                     return null;
                   },
                 ),
-                
                 ElevatedButton(
                   child: const Text('Make Payment'),
                   onPressed: (){
-                    makePayment();
+                    if(amountCtrl.text.trim().isNotEmpty){
+                      makePayment();
+                    }
+                    else{print('noting');}
+                    // successwidget("Payment Successful ! Please shop with us again");
                   },
                 )
               ],

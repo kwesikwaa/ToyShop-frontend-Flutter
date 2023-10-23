@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:toyshop/Models/toy.dart';
+import 'package:toyshop/Models/toymodel.dart';
 
 class ToyDetail extends StatelessWidget {
   

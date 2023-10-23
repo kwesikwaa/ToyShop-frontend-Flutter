@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:toyshop/Transaaction/payment.dart';
 import 'package:toyshop/routes/cart.dart';
 import 'package:toyshop/routes/shop.dart';
@@ -6,7 +7,7 @@ import 'package:toyshop/routes/profile.dart';
 import 'package:toyshop/routes/wishlist.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(const ProviderScope(child: MyApp()));
 }
 
 class MyApp extends StatelessWidget {
@@ -23,7 +24,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const Payment()
+      home: const InitArea()
     );
   }
 }
@@ -68,20 +69,23 @@ class _InitAreaState extends State<InitArea> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      bottomNavigationBar: BottomNavigationBar(
-        
-        currentIndex: currentroute,
-        items: routebaritems,
-        onTap: (value){
-          setState(() {
-            currentroute = value;
-          });
-        },
-        selectedItemColor: Colors.red,
-        unselectedItemColor: Colors.grey,
+    return SafeArea(
+      child: Scaffold(
+        bottomNavigationBar: BottomNavigationBar(
+          
+          currentIndex: currentroute,
+          items: routebaritems,
+          onTap: (value){
+            setState(() {
+              print('tapped');
+              currentroute = value;
+            });
+          },
+          selectedItemColor: Colors.red,
+          unselectedItemColor: Colors.grey,
+        ),
+        body: routes[currentroute],
       ),
-      body: routes[currentroute],
     );
   }
 }

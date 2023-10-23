@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:toyshop/Models/toy.dart';
+import 'package:toyshop/Models/toymodel.dart';
 import 'package:toyshop/components/toydetail.dart';
 
 class ToyItem extends StatefulWidget {
@@ -26,12 +26,14 @@ class _ToyItemState extends State<ToyItem> {
         ),
         child: Column(
                 children: [
-                  FractionallySizedBox(
-                    heightFactor: 0.7,
+                  SizedBox(
+                    height: 130,
+                    width: 130,
                     child: Image.asset(widget.toy.thumbnail),
                   ),
-                  FractionallySizedBox(
-                    heightFactor: 0.2,
+                  SizedBox(
+                    height: 130,
+                    width: 130,
                     child: Text(widget.toy.name),
                   ),
                   Row(

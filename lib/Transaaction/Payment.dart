@@ -1,6 +1,63 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_paystack/flutter_paystack.dart';
 
+
+
+class PaymentCheckOut{
+  final String message;
+  final int amount;
+  final plugin = PaystackPlugin();
+  final paystackkey = 'pk_test_0e0a3ee77f7c00b35972173c6c8a7a57ea83d531';
+
+  PaymentCheckOut({required this.message, required this.amount});
+
+  makePayment(BuildContext context) async{
+    
+    // ignore: avoid_print
+    print('price is ${amount.toString()}');
+
+    Charge charge = Charge()
+      ..amount = amount
+      ..reference = 'somereference'
+      // ..accessCode = 'someaccesscodegoeshere'
+      ..email = 'example@email.com'
+      ..currency = 'GHS';
+    
+    // var paymentmethod = method=='card'?CheckoutMethod.card:CheckoutMethod.bank;
+
+    CheckoutResponse res = await plugin.checkout(
+      context,
+      method: CheckoutMethod.card,
+      charge: charge
+    );
+
+    if(res.status){
+      final msg = '$message Ref: ${res.reference}';
+      successwidget(msg, context);
+    }
+  }
+
+  successwidget(String message, BuildContext context){
+      Navigator.of(context).push(MaterialPageRoute(builder:(context)=>const Payment()));
+       Navigator.push(context,MaterialPageRoute(builder:(context)=>const Payment()));
+      return showDialog(
+        context: context, 
+        barrierDismissible: false,
+        builder: (BuildContext context){
+          return AlertDialog(
+            content: Text(message),
+            actions: [
+              ElevatedButton(child: const Text('OK'),
+                onPressed: (){ Navigator.pop(context);}, 
+              )
+            ],
+          );
+        });
+  }
+
+
+}
+
 class Payment extends StatefulWidget {
   const Payment({super.key});
 

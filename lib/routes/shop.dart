@@ -29,8 +29,9 @@ class _ShopRouteState extends State<ShopRoute> {
             
             children: [
               // TextField(
-              
+                
               //   controller: searchCtrl,
+                
               // ),
               ElevatedButton(
                 child:const Text('Search'),
@@ -41,13 +42,40 @@ class _ShopRouteState extends State<ShopRoute> {
                 })
             ],
           ),
+          const SizedBox(height:10),
+          const Align(alignment:Alignment.centerLeft,child: Text('Upcoming',style: TextStyle(fontWeight: FontWeight.bold),)),
+          const SizedBox(height:5),
+          SizedBox(
+            height: MediaQuery.of(context).size.height *0.25,
+            child: Scrollbar(
+              trackVisibility: true,
+              thumbVisibility: true,
+              thickness: 10,
+              radius: const Radius.circular(15),
+              interactive: true,
+              child: ListView.builder(
+                scrollDirection: Axis.horizontal,
+                itemCount: AllToys.cartlist.length,
+                itemBuilder: (builder, index){
+                  return Container(
+                    margin: const EdgeInsets.only(right: 8, bottom: 15),
+                    decoration: BoxDecoration(borderRadius: BorderRadius.circular(10)),
+                    clipBehavior: Clip.antiAlias,
+                    width: MediaQuery.of(context).size.width/1.5,
+                    height: 160,
+                    child: Image.asset(AllToys.cartlist[index].item.thumbnail, fit: BoxFit.cover),
+                  );
+                }),
+            ),
+          ),
+          const SizedBox(height: 10,),
           Expanded(
             child: GridView.builder(
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 2,
                 crossAxisSpacing: 10,
                 mainAxisSpacing: 10,
-                childAspectRatio: 1/2
+                childAspectRatio: 0.85
               ),
               itemCount: AllToys.stock.length,
               scrollDirection: Axis.vertical, 

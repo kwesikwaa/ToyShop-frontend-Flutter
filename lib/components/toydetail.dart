@@ -10,28 +10,31 @@ class ToyDetail extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        leading: BackButton(onPressed: (){Navigator.pop(context);}),
+      ),
       body:Column(
         children: [
-           FractionallySizedBox(
-            heightFactor: 0.5,
-            child: Image.asset(toy.thumbnail, fit:BoxFit.cover),
+           Expanded(
+             child: FractionallySizedBox(
+              heightFactor: 0.5,
+              child: Hero(tag:toy.thumbnail,child: Image.asset(toy.thumbnail, fit:BoxFit.cover)),
+             ),
            ),
            Text(toy.name),
            const SizedBox(height: 2),
            Text(toy.description),
            const SizedBox(height: 2),
-           Expanded(
-             child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                const Icon(Icons.favorite, color: Colors.grey,),
-                ElevatedButton(child: const Text('Add to Cart'),
-                  onPressed: (){
-                    
-                  },
-                )
-              ],
-             ),
+           Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              const Icon(Icons.favorite, color: Colors.grey,),
+              ElevatedButton(child: const Text('Add to Cart'),
+                onPressed: (){
+                  
+                },
+              )
+            ],
            )
       ]),
     );

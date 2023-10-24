@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:toyshop/Transaaction/payment.dart';
 import 'package:toyshop/routes/cart.dart';
 import 'package:toyshop/routes/shop.dart';
 import 'package:toyshop/routes/profile.dart';
@@ -77,7 +76,6 @@ class _InitAreaState extends State<InitArea> {
           items: routebaritems,
           onTap: (value){
             setState(() {
-              print('tapped');
               currentroute = value;
             });
           },

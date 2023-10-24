@@ -12,6 +12,9 @@ class ToyItem extends StatefulWidget {
 } 
 
 class _ToyItemState extends State<ToyItem> {
+
+  
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -21,37 +24,30 @@ class _ToyItemState extends State<ToyItem> {
       child: Container(
         width: MediaQuery.of(context).size.width/2,
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(6),
-          color: Colors.greenAccent.withOpacity(0.2)
+          borderRadius: BorderRadius.circular(10),
+          color: Color.fromARGB(255, 213, 221, 228)
         ),
-        child: Column(
-                children: [
-                  SizedBox(
-                    height: 130,
-                    width: 130,
-                    child: Image.asset(widget.toy.thumbnail),
-                  ),
-                  SizedBox(
-                    height: 130,
-                    width: 130,
-                    child: Text(widget.toy.name),
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      GestureDetector(
-                        child: const Icon(Icons.favorite, color: Colors.grey,),
-                        onTap: (){},
-                      ),
-                      Text("#${widget.toy.price.toString()}"),
-                      GestureDetector(
-                        child: const Icon(Icons.add_shopping_cart_sharp, color: Colors.grey,),
-                        onTap: (){},
-                      )
-                    ]
-                  ),
-                ],
-              ),
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Column(
+                  children: [
+                    Flexible(
+                      // height: 140,
+                      // width: double.infinity,
+                      child: Hero(tag:widget.toy.thumbnail,child: Image.asset(widget.toy.thumbnail)),
+                    ),
+                    Text(widget.toy.name),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        IconButton(onPressed: (){}, icon: const Icon(Icons.favorite, color: Colors.grey,)),
+                        Text("#${widget.toy.price.toString()}", style: const TextStyle(fontSize:20,fontWeight: FontWeight.bold),),
+                        IconButton(onPressed: (){}, icon: const Icon(Icons.add_shopping_cart_sharp, color: Colors.grey,)),
+                      ]
+                    ),
+                  ],
+                ),
+        ),
       ),
     );
   }

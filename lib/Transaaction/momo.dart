@@ -32,24 +32,24 @@ class Momo{
 
 
 class PayStackAuth{
-  final String authorizationUrl;
-  final String accessCode;
+  final String authorization_url;
+  final String access_code;
   final String reference;
 
-  PayStackAuth({required this.authorizationUrl, required this.accessCode, required this.reference});
+  PayStackAuth({required this.authorization_url, required this.access_code, required this.reference});
 
   factory PayStackAuth.fromJson(Map<String,dynamic> json){
     return PayStackAuth(
-      authorizationUrl:json['authorization_url'],
-      accessCode: json['access_code'],
+      authorization_url:json['authorization_url'],
+      access_code: json['access_code'],
       reference: json['reference']
     );
   }
 
   Map<String, dynamic> toJson(){
     return {
-      'authorization_url':authorizationUrl,
-      'access_code': accessCode,
+      'authorization_url':authorization_url,
+      'access_code': access_code,
       'reference': reference
     };
   }
@@ -58,7 +58,7 @@ class PayStackAuth{
 Future<PayStackAuth> createTransaction(Momo momo) async{
   const String url = 'https://api.paystack.co/transaction/initialize';
   final data = momo.toJson();
-  
+ 
   try{
     final res = await http.post(
       Uri.parse(url),
@@ -68,8 +68,9 @@ Future<PayStackAuth> createTransaction(Momo momo) async{
       },
       body: jsonEncode(data)
     );
-
+    print('=-=-=-=--=- done resing');
     if(res.statusCode == 200){
+      print('-=-=-=-= inside 200');
       final data = jsonDecode(res.body);
       return PayStackAuth.fromJson(data['data']);
     }
@@ -77,7 +78,7 @@ Future<PayStackAuth> createTransaction(Momo momo) async{
       throw 'Payment Unsuccessful';
     }
   } on Exception{
-      throw 'Payment Unsuccessful';
+      throw 'Connection Failed';
   }
 }
 
@@ -90,10 +91,12 @@ Future<String> initializePayment(String amount) async{
     final price = double.parse(amount);
     final pay = (price*100).round();
     final momo = Momo(amount: pay.toString(), reference: reference, currency: 'GHS', email: email);
+    print('-=-=-=-=-=-=-=- $pay');
     final res = await createTransaction(momo);
-    return res.authorizationUrl;
+    return res.authorization_url;
   }catch(e){
     print('Error initializing payment');
+    print(e);
     return e.toString(); 
   }
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:toyshop/Models/example_toylist.dart';
 
 class LoginSignUP extends StatefulWidget {
   const LoginSignUP({super.key});
@@ -28,6 +29,7 @@ class _LoginSignUPState extends State<LoginSignUP> {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
+                const Icon(Icons.person_pin, size: 150,),
                 TextFormField(
                   controller: loginvarCtrl,
                   validator: (value) {
@@ -56,13 +58,32 @@ class _LoginSignUPState extends State<LoginSignUP> {
                     label: Text('password')
                   ),
                 ),
-                const SizedBox(height: 10,),
+                const SizedBox(height: 25,),
                 SizedBox(
                   width: double.infinity,
-                  child: ElevatedButton(onPressed: (){}, child: const Text('Login'))
+                  child: ElevatedButton(
+                    onPressed: (){
+                      AllToys.loggedin = true;
+                      Navigator.pop(context);
+                    }, 
+                    child: const Text('Login'),
+                    style: ElevatedButton.styleFrom(
+                      padding: const EdgeInsets.symmetric(vertical: 15),
+                      backgroundColor: Colors.orange,
+                      foregroundColor: Colors.black,
+                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5))
+                    ),
+                      
+                  )
                 ),
                 const SizedBox(height: 10,),
-                TextButton(onPressed: (){}, child: const Text('SignUp'))
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const Text('Not a custormer yet?'),
+                    TextButton(onPressed: (){}, child: const Text('SignUp')),
+                  ],
+                )
               ],
             ),
           ),

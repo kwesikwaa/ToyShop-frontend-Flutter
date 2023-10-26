@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:toyshop/Models/example_toylist.dart';
 import 'package:toyshop/components/loginsignup.dart';
+import 'package:toyshop/components/profilelogedin.dart';
 
 class ProfileRoute extends StatelessWidget {
   const ProfileRoute({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return AllToys.loggedin?Padding(
+    return !AllToys.loggedin?Padding(
       padding: const EdgeInsets.all(8.0),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -22,12 +23,20 @@ class ProfileRoute extends StatelessWidget {
             child: ElevatedButton(
               onPressed: (){
                 Navigator.push(context,MaterialPageRoute(builder: (context)=> const LoginSignUP()));
-              }, 
+              },
+                style: ElevatedButton.styleFrom(
+                  padding: const EdgeInsets.symmetric(vertical: 15),
+                  backgroundColor: Colors.orange,
+                  foregroundColor: Colors.black,
+                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5))
+                ),
               child: const Text('Login')),
           )
       ],),
-    ):
-    const Center(child: Text('Welcome blah blah blah to something'))
+    )
+    // else starts here
+    :
+    const ProfileLogedIn()
     ;
   }
 }

@@ -1,6 +1,6 @@
 import 'package:toyshop/Models/cartitem.dart';
 import 'package:toyshop/Models/toymodel.dart';
-import 'package:toyshop/Models/wishitem.dart';
+
 
 class AllToys{
   static List<Toy> stock = [

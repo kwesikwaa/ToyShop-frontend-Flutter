@@ -47,19 +47,22 @@ class _InitAreaState extends State<InitArea> {
     ProfileRoute()
   ];
 
-  Widget _badges(IconData icon, String data){
+  Widget _badges(IconData icon, int data){
     return Center(
       child: Container(
-        height: 15,
-        width: 15,
+        // padding: EdgeInsets.only(bottom: 10),
+        height: 45,
+        width: 45,
+        // color:Colors.blue,
         child: Stack(children: [
-        Icon(icon,),
-        Positioned(
+        Align(alignment:Alignment.center,child: Icon(icon,)),
+        if(data>0)Align(
+          alignment: Alignment.topRight,
           child:Container(
-            height: 35,
-            width: 35,
-            decoration: const BoxDecoration(color: Colors.red, shape: BoxShape.circle),
-            child: Center(child:Text(data, style: const TextStyle(color: Colors.white),))
+            height: 20,
+            width: 20,
+            decoration: const BoxDecoration(color: Colors.black54, shape: BoxShape.circle),
+            child: Center(child:Text(data.toString(), style: const TextStyle(fontSize:10, color: Colors.white),))
             )
           )
       ],)),
@@ -80,11 +83,11 @@ class _InitAreaState extends State<InitArea> {
       BottomNavigationBarItem(
         // icon: Icon(Icons.favorite),
         // icon: Row(children: [const Icon(Icons.favorite),Text(AllToys.wishlist.length.toString())]),
-        icon: _badges(Icons.favorite, AllToys.wishlist.length.toString()),
+        icon: _badges(Icons.favorite, AllToys.wishlist.length),
         label: 'Wishlist',
       ),
       BottomNavigationBarItem(
-        icon: Row(children: [const Icon(Icons.shopping_cart_checkout),Text(AllToys.cartlist.length.toString())]),
+        icon: _badges(Icons.shopping_basket, AllToys.cartlist.length),
         label: 'cart',
       ),
       BottomNavigationBarItem(
@@ -94,19 +97,23 @@ class _InitAreaState extends State<InitArea> {
     ];
     return SafeArea(
       child: Scaffold(
-        bottomNavigationBar: BottomNavigationBar(
-          showSelectedLabels: false,    
-          showUnselectedLabels: false,
-          type: BottomNavigationBarType.fixed,
-          currentIndex: currentroute,
-          items: routebaritems,
-          onTap: (value){
-            setState(() {
-              currentroute = value;
-            });
-          },
-          selectedItemColor: Colors.red,
-          unselectedItemColor: Colors.grey,
+        bottomNavigationBar: SizedBox(
+          height: 74,
+          child: BottomNavigationBar(
+            iconSize: 40,
+            showSelectedLabels: false,    
+            showUnselectedLabels: false,
+            type: BottomNavigationBarType.fixed,
+            currentIndex: currentroute,
+            items: routebaritems,
+            onTap: (value){
+              setState(() {
+                currentroute = value;
+              });
+            },
+            selectedItemColor: Colors.orange[700],
+            unselectedItemColor: Colors.grey,
+          ),
         ),
         body: routes[currentroute],
       ),

@@ -67,22 +67,33 @@ class _ToyItemState extends State<ToyItem> {
         Navigator.push(context, MaterialPageRoute(builder: (context)=>ToyDetail(toy: widget.toy)));
       },
       child: Container(
-        width: MediaQuery.of(context).size.width/2,
-        // height: MediaQuery.of(context).size.height/3,
+        margin: const EdgeInsets.symmetric(horizontal: 5, vertical: 5),
+        width: MediaQuery.of(context).size.width,
+        height: MediaQuery.of(context).size.height,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10),
-          color: Color.fromARGB(255, 213, 221, 228)
+          color: const Color.fromARGB(255, 213, 221, 228),
+          // boxShadow: [BoxShadow(
+          //   color: Colors.grey.withOpacity(0.3),
+          //   spreadRadius: 2,
+          //   blurRadius: 3,
+          //   offset: Offset(0, 3)
+          // )]
         ),
         child: Padding(
-          padding: const EdgeInsets.all(8.0),
+          padding: const EdgeInsets.only(left:8,right:8,top:8,bottom:0),
           child: Column(
                   children: [
-                    Flexible(
-                      // height: 140,
-                      // width: double.infinity,
-                      child: Hero(tag:widget.toy.thumbnail,child: Image.asset(widget.toy.thumbnail)),
+                    Expanded(
+                      child: FractionallySizedBox(
+                        heightFactor: 1,
+                        child: Container(
+                          decoration: BoxDecoration(borderRadius: BorderRadius.circular(10)),
+                          clipBehavior: Clip.antiAlias,
+                          child: Hero(tag:widget.toy.thumbnail,child: Image.asset(widget.toy.thumbnail, fit: BoxFit.cover,))),
+                      ),
                     ),
-                    Text(widget.toy.name),
+                    Align(alignment:Alignment.centerLeft,child: Text(widget.toy.name, style: const TextStyle(fontSize: 20,fontWeight: FontWeight.bold),)),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -93,14 +104,14 @@ class _ToyItemState extends State<ToyItem> {
                             setState(() {});
                           },
                           icon: Icon(Icons.favorite, color: wished(widget.toy)?Colors.red:Colors.grey,)),
-                        Text("#${widget.toy.price.toString()}", style: const TextStyle(fontSize:20,fontWeight: FontWeight.bold),),
+                        Text("₵ ${widget.toy.price.toString()}", style: const TextStyle(fontSize:20,fontWeight: FontWeight.bold),),
                         IconButton(
                           onPressed: (){
                             togglecart(widget.toy);
                             // force rebuild for icon
                             setState(() {});
                           },
-                          icon: Icon(Icons.add_shopping_cart_sharp, color: carted(widget.toy)?Colors.green:Colors.grey,)),
+                          icon: Icon(Icons.shopping_basket_rounded, color: carted(widget.toy)?Colors.green:Colors.grey,)),
                       ]
                       
                     ),

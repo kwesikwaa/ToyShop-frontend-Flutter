@@ -79,29 +79,55 @@ class _CartRouteState extends State<CartRoute> {
                       },
                       child: Card(
                         child: ListTile(
-                          title:Text(cart[index].item.name),
-                          subtitle: Text(cart[index].item.price.toStringAsFixed(2)),
+                          title:Text(cart[index].item.name, style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 20),),
+                          subtitle:Row(
+                            children: [  
+                              Container(
+                                height: 30,
+                                width: 30,
+                                child: ElevatedButton(
+                                  onPressed: (){
+                                    setState(() {
+                                      if(cart[index].qty>1){
+                                        cart[index].qty -=1;
+                                        gettotal();
+                                      }
+                                    });
+                                  },
+                                  style: ElevatedButton.styleFrom(
+                                    foregroundColor: Colors.white,
+                                    shape: const RoundedRectangleBorder(borderRadius: BorderRadius.only(topLeft:Radius.circular(20),bottomLeft: Radius.circular(20))),
+                                    backgroundColor: Colors.deepPurple
+                                  ),
+                                  child: const Text('')
+                                  ),
+                              ),
+                              Container(
+                                width: 30,
+                                margin: const EdgeInsets.symmetric(horizontal: 5),
+                                child: Center(child: Text(cart[index].qty.toString(), style: const TextStyle(fontSize: 20),))
+                              ),
+                              Container(
+                                height: 30,
+                                width: 30,
+                                child: ElevatedButton(
+                                  onPressed: (){
+                                    setState(() {
+                                        cart[index].qty +=1;
+                                        gettotal();
+                                    });
+                                  }, 
+                                  style: ElevatedButton.styleFrom(
+                                    foregroundColor: Colors.white,
+                                    shape: const RoundedRectangleBorder(borderRadius: BorderRadius.only(topRight:Radius.circular(20),bottomRight: Radius.circular(20))),
+                                    backgroundColor: Colors.deepPurple
+                                  ),
+                                  child: const Text('')
+                                ),
+                              ),
+                            ],),    
                           leading: Hero(tag:cart[index].item.thumbnail,child: CircleAvatar(radius: 25, backgroundImage: AssetImage(cart[index].item.thumbnail))),
-                          trailing: FractionallySizedBox(
-                            widthFactor: 0.3,
-                            child: Row(children: [
-                              IconButton(onPressed: (){
-                                setState(() {
-                                  if(cart[index].qty>1){
-                                    cart[index].qty -=1;
-                                    gettotal();
-                                  }
-                                });
-                              }, icon: const Icon(Icons.remove_circle)),
-                              Text(cart[index].qty.toString()),
-                              IconButton(onPressed: (){
-                                setState(() {
-                                    cart[index].qty +=1;
-                                    gettotal();
-                                });
-                              }, icon: const Icon(Icons.add_circle)),
-                            ],),
-                          ),
+                          trailing: Text(cart[index].item.price.toStringAsFixed(2),style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 20)),
                         ),
                       ),
                     ),
@@ -140,9 +166,9 @@ class _CartRouteState extends State<CartRoute> {
                 child: ElevatedButton(
                   child: Text('Pay Now'),
                   style: ElevatedButton.styleFrom(
-                    foregroundColor: Colors.black,
+                    foregroundColor: Colors.white,
                     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
-                    backgroundColor: Colors.orange
+                    backgroundColor: Colors.deepPurple
                   ),
                   onPressed: (){
                   final total = gettotal();
@@ -161,18 +187,18 @@ class _CartRouteState extends State<CartRoute> {
                             Navigator.push(context,MaterialPageRoute(builder: (context)=>MomoPaymentUI(amount: total)));
                           },
                           style: ElevatedButton.styleFrom(
-                            foregroundColor: Colors.black,
+                            foregroundColor: Colors.white,
                             shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
-                            backgroundColor: Colors.orange
+                            backgroundColor: Colors.deepPurple
                           ),
                           ),
                           ElevatedButton(
                             child: const Text('Cancel'),
                             onPressed: (){Navigator.pop(context);},
                             style: ElevatedButton.styleFrom(
-                              foregroundColor: Colors.black,
+                              foregroundColor: Colors.white,
                               shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
-                              backgroundColor: Colors.orange
+                              backgroundColor: Colors.deepPurple
                             ),
                           )
                         ],  
@@ -193,9 +219,9 @@ class _CartRouteState extends State<CartRoute> {
                               Navigator.push(context,MaterialPageRoute(builder: (context)=>const LoginSignUP()));
                             },
                             style: ElevatedButton.styleFrom(
-                              foregroundColor: Colors.black,
+                              foregroundColor: Colors.white,
                               shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
-                              backgroundColor: Colors.orange
+                              backgroundColor: Colors.deepPurple
                             ),
                           ),
                           ElevatedButton(
@@ -205,9 +231,9 @@ class _CartRouteState extends State<CartRoute> {
                               Navigator.push(context,MaterialPageRoute(builder: (context)=>const LoginSignUP()));
                             },
                             style: ElevatedButton.styleFrom(
-                              foregroundColor: Colors.black,
+                              foregroundColor: Colors.white,
                               shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
-                              backgroundColor: Colors.orange
+                              backgroundColor: Colors.deepPurple
                             ),
                           )
                         ],  
@@ -223,3 +249,5 @@ class _CartRouteState extends State<CartRoute> {
     );
   }
 }
+
+

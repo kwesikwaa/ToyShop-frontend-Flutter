@@ -1,5 +1,6 @@
 import 'package:toyshop/Models/cartitem.dart';
 import 'package:toyshop/Models/toymodel.dart';
+import 'package:toyshop/Models/wishitem.dart';
 
 
 class AllToys{
@@ -111,7 +112,7 @@ class AllToys{
     
   ];
 
-  static List<Toy> wishlist =[];
+  static List<WishItem> wishlist =[];
 
   static List<Toy> upcomings = [
     Toy(

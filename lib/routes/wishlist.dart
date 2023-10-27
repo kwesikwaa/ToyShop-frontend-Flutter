@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:toyshop/Models/cartitem.dart';
 import 'package:toyshop/Models/example_toylist.dart';
 import 'package:toyshop/components/toydetail.dart';
 
@@ -12,6 +13,35 @@ class WishlistRoute extends StatefulWidget {
 class _WishlistRouteState extends State<WishlistRoute> {
   final wishlist = AllToys.wishlist;
 
+  _movetocart(int index, {int? qty=1}){
+    final movethis = wishlist[index];
+    final createnew = CartItem(item: movethis.item, qty: qty!);
+
+    bool exists = false;
+    int existsAtIndex = 0;
+
+    for(CartItem y in AllToys.cartlist){
+      if(y.item.id == movethis.item.id){
+        exists = true;
+        existsAtIndex = AllToys.cartlist.indexOf(y);
+      }
+    }
+
+    if(exists){
+      if(AllToys.cartlist[existsAtIndex].qty>movethis.qty){
+        AllToys.wishlist.removeAt(index);
+      }
+      else{
+        AllToys.cartlist[existsAtIndex].qty = qty;
+        AllToys.wishlist.removeAt(index);
+      }
+      
+    }
+    else{
+      AllToys.cartlist.add(createnew);
+
+    }
+  }
   
 
   @override
@@ -40,13 +70,88 @@ class _WishlistRouteState extends State<WishlistRoute> {
             key: UniqueKey(),
             child: GestureDetector(
               onTap: (){
-                Navigator.push(context, MaterialPageRoute(builder: (context)=>ToyDetail(toy: wishlist[index])));
+                Navigator.push(context, MaterialPageRoute(builder: (context)=>ToyDetail(toy: wishlist[index].item)));
               },
               child: Card(
                 child: ListTile(
-                  title:Text(wishlist[index].name),
-                  leading: Hero(tag:wishlist[index].thumbnail,child: CircleAvatar(radius: 25, backgroundImage: AssetImage(wishlist[index].thumbnail))),
-                  trailing: Text(wishlist[index].price.toStringAsFixed(2), style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 25),),
+                  title: Container(
+                    // color: Colors.red,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(wishlist[index].item.name,style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 20),),
+                        Text(wishlist[index].item.price.toStringAsFixed(2), style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 20),),
+                        Row(
+                          children: [
+                            SizedBox(
+                              height: 30,
+                              width: 30,
+                              child: ElevatedButton(
+                                onPressed: (){
+                                  setState(() {
+                                    if(wishlist[index].qty>1){
+                                      wishlist[index].qty -=1;
+                                    }
+                                  });
+                                },
+                                style: ElevatedButton.styleFrom(
+                                  foregroundColor: Colors.white,
+                                  shape: const RoundedRectangleBorder(borderRadius: BorderRadius.only(topLeft:Radius.circular(20),bottomLeft: Radius.circular(20))),
+                                  backgroundColor: Colors.deepPurple
+                                ),
+                                child: const Text('')
+                                ),
+                            ),
+                            Container(
+                              width: 30,
+                              margin: const EdgeInsets.symmetric(horizontal: 5),
+                              child: Center(child: Text(wishlist[index].qty.toString()))
+                            ),
+                            SizedBox(
+                              height: 30,
+                              width: 30,
+                              child: ElevatedButton(
+                                onPressed: (){
+                                  setState(() {
+                                      wishlist[index].qty +=1;
+                                  });
+                                }, 
+                                style: ElevatedButton.styleFrom(
+                                  foregroundColor: Colors.white,
+                                  shape: const RoundedRectangleBorder(borderRadius: BorderRadius.only(topRight:Radius.circular(20),bottomRight: Radius.circular(20))),
+                                  backgroundColor: Colors.deepPurple
+                                ),
+                                child: const Text('')
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+                  leading: Hero(
+                    tag:wishlist[index].item.thumbnail,
+                    child: Container(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      clipBehavior: Clip.antiAlias,
+                      child: Image.asset(wishlist[index].item.thumbnail))),
+                  trailing:ElevatedButton(
+                      onPressed: (){
+                        _movetocart(index,qty: wishlist[index].qty);
+                        setState(() {
+                          
+                        });
+                        
+                      },
+                      style: ElevatedButton.styleFrom(
+                        foregroundColor: Colors.white,
+                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
+                        backgroundColor: Colors.deepPurple
+                      ),
+                      child: const Icon(Icons.shopping_basket) ,
+                    ) ,
                 ),
               ),
             ),

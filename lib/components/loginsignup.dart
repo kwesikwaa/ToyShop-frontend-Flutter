@@ -59,6 +59,9 @@ class _LoginSignUPState extends State<LoginSignUP> {
                   ),
                 ),
                 const SizedBox(height: 25,),
+                Align(
+                  alignment:Alignment.centerLeft,
+                  child:TextButton(onPressed: (){}, child: const Text('Forgotten Your Password?'))),
                 SizedBox(
                   width: double.infinity,
                   child: ElevatedButton(
@@ -69,8 +72,8 @@ class _LoginSignUPState extends State<LoginSignUP> {
                     child: const Text('Login'),
                     style: ElevatedButton.styleFrom(
                       padding: const EdgeInsets.symmetric(vertical: 15),
-                      backgroundColor: Colors.orange,
-                      foregroundColor: Colors.black,
+                      backgroundColor: Colors.deepPurple,
+                      foregroundColor: Colors.white,
                       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5))
                     ),
                       

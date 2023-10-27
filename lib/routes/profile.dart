@@ -26,8 +26,8 @@ class ProfileRoute extends StatelessWidget {
               },
                 style: ElevatedButton.styleFrom(
                   padding: const EdgeInsets.symmetric(vertical: 15),
-                  backgroundColor: Colors.orange,
-                  foregroundColor: Colors.black,
+                  backgroundColor: Colors.deepPurple,
+                  foregroundColor: Colors.white,
                   shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5))
                 ),
               child: const Text('Login')),

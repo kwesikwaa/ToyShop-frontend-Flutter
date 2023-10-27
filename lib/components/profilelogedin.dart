@@ -35,8 +35,8 @@ class _ProfileLogedInState extends State<ProfileLogedIn> {
               icon: const Icon(Icons.logout), 
               label: const Text('Logout'),
               style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.orange,
-                foregroundColor: Colors.black,
+                backgroundColor: Colors.deepPurple,
+                foregroundColor: Colors.white,
                 shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5))
               )
             ),
@@ -45,7 +45,7 @@ class _ProfileLogedInState extends State<ProfileLogedIn> {
               indicator: UnderlineTabIndicator(borderRadius: BorderRadius.circular(5),borderSide: const BorderSide(width: 5)),
               tabs: const [
                 Tab(text: 'transactions',),
-                Tab(text: 'something',),
+                Tab(text: 'track',),
                 Tab(text: 'settings',),
               ]
             ),
@@ -53,7 +53,7 @@ class _ProfileLogedInState extends State<ProfileLogedIn> {
               child: TabBarView(
                 children: [
                   Center(child: Text('transactions history'),),
-                  Center(child: Text('something something'),),
+                  Center(child: Text('No pending transaction to track'),),
                   Center(child: Text('make settings changes'),),
                 ],))
           ],

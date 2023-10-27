@@ -58,12 +58,20 @@ class _MomoPaymentUIState extends State<MomoPaymentUI> {
           );
         }
         else{
-          return const Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              CircularProgressIndicator(),
-              Text('Loading Payment')
-            ],
+          return const Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                SizedBox(
+                  width: 50,
+                  height: 50,
+                  child: CircularProgressIndicator()
+                ),
+                SizedBox(height: 10,),
+                Text('Making Payment Arrangement...', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),)
+              ],
+            ),
           );
         }
       }),

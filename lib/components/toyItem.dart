@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:toyshop/Models/cartitem.dart';
 import 'package:toyshop/Models/example_toylist.dart';
 import 'package:toyshop/Models/toymodel.dart';
+import 'package:toyshop/Models/wishitem.dart';
 import 'package:toyshop/components/toydetail.dart';
 
 class ToyItem extends StatefulWidget {
@@ -16,16 +17,30 @@ class ToyItem extends StatefulWidget {
 class _ToyItemState extends State<ToyItem> {
   
   bool wished(Toy x){
-    final y = AllToys.wishlist.contains(x);
-    return y;
+    for(WishItem y in AllToys.wishlist){
+      if(y.item.id == x.id){
+        return true;
+      }
+    }
+    return false;
   }
   
-  togglewishlist(Toy wishtoy){
-    if(AllToys.wishlist.contains(wishtoy)){
-      AllToys.wishlist.remove(wishtoy);
+  togglewishlist(Toy thisitem){
+    int index = 0;
+    bool here = false;
+    for(WishItem y in AllToys.wishlist){
+      if(y.item.id == thisitem.id){
+        here = true;
+        index = AllToys.wishlist.indexOf(y);
+        break;
+      }
+    }
+
+    if(here){
+      AllToys.wishlist.removeAt(index);
     }
     else{
-      AllToys.wishlist.add(wishtoy);
+      AllToys.wishlist.add(WishItem(item: thisitem, qty: 1));
     }
   }
   
@@ -46,9 +61,6 @@ class _ToyItemState extends State<ToyItem> {
     else{
       AllToys.cartlist.add(CartItem(item: thisitem, qty: 1));
     }
-
-    
-  
   }     
     
   bool carted(Toy x){
@@ -103,7 +115,7 @@ class _ToyItemState extends State<ToyItem> {
                             // force rebuild for icon
                             setState(() {});
                           },
-                          icon: Icon(Icons.favorite, color: wished(widget.toy)?Colors.red:Colors.grey,)),
+                          icon: Icon(Icons.favorite, color: wished(widget.toy)?Colors.pink:Colors.grey,)),
                         Text("₵ ${widget.toy.price.toString()}", style: const TextStyle(fontSize:20,fontWeight: FontWeight.bold),),
                         IconButton(
                           onPressed: (){
@@ -111,7 +123,7 @@ class _ToyItemState extends State<ToyItem> {
                             // force rebuild for icon
                             setState(() {});
                           },
-                          icon: Icon(Icons.shopping_basket_rounded, color: carted(widget.toy)?Colors.green:Colors.grey,)),
+                          icon: Icon(Icons.shopping_basket_rounded, color: carted(widget.toy)?Colors.pink:Colors.grey,)),
                       ]
                       
                     ),

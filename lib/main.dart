@@ -4,6 +4,7 @@ import 'package:toyshop/Models/example_toylist.dart';
 import 'package:toyshop/routes/cart.dart';
 import 'package:toyshop/routes/shop.dart';
 import 'package:toyshop/routes/profile.dart';
+import 'package:toyshop/routes/shopwithsliver.dart';
 import 'package:toyshop/routes/wishlist.dart';
 
 void main() {
@@ -41,7 +42,8 @@ class _InitAreaState extends State<InitArea> {
 
   int currentroute = 0;
   List routes = const[
-    ShopRoute(),
+    // ShopRoute(),
+    ShopWithSliverRoute(),
     WishlistRoute(),
     CartRoute(),
     ProfileRoute()
@@ -61,8 +63,8 @@ class _InitAreaState extends State<InitArea> {
           child:Container(
             height: 20,
             width: 20,
-            decoration: const BoxDecoration(color: Colors.black54, shape: BoxShape.circle),
-            child: Center(child:Text(data.toString(), style: const TextStyle(fontSize:10, color: Colors.white),))
+            decoration: const BoxDecoration(color: Colors.pink, shape: BoxShape.circle),
+            child: Center(child:Text(data.toString(), style: const TextStyle(fontSize:10, color: Colors.white, fontWeight: FontWeight.bold),))
             )
           )
       ],)),
@@ -74,15 +76,12 @@ class _InitAreaState extends State<InitArea> {
 
   @override
   Widget build(BuildContext context) {
-    debugPrint('-=-=-=-=-=-=- rebudiling bar');
     List<BottomNavigationBarItem> routebaritems =  [
       const BottomNavigationBarItem(
         icon: Icon(Icons.home),
         label: 'Shop',
       ),
       BottomNavigationBarItem(
-        // icon: Icon(Icons.favorite),
-        // icon: Row(children: [const Icon(Icons.favorite),Text(AllToys.wishlist.length.toString())]),
         icon: _badges(Icons.favorite, AllToys.wishlist.length),
         label: 'Wishlist',
       ),
@@ -97,10 +96,14 @@ class _InitAreaState extends State<InitArea> {
     ];
     return SafeArea(
       child: Scaffold(
-        bottomNavigationBar: SizedBox(
-          height: 74,
+        //wrapped the bottomnavbar in a container(even sizedbox before that) 
+        // in an attempt to scale down the bar, to no avail
+        // it is redundate now
+        bottomNavigationBar: Container(
+          color: Colors.red,
+          height: 79,
           child: BottomNavigationBar(
-            iconSize: 40,
+            iconSize: 35,
             showSelectedLabels: false,    
             showUnselectedLabels: false,
             type: BottomNavigationBarType.fixed,
@@ -111,7 +114,7 @@ class _InitAreaState extends State<InitArea> {
                 currentroute = value;
               });
             },
-            selectedItemColor: Colors.orange[700],
+            selectedItemColor: Colors.deepPurple,
             unselectedItemColor: Colors.grey,
           ),
         ),

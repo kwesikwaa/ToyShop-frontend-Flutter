@@ -1,10 +1,12 @@
+// ignore_for_file: unused_import
+
 import 'package:flutter/material.dart';
 import 'package:flutter_paystack/flutter_paystack.dart';
 import 'package:toyshop/Models/cartitem.dart';
 import 'package:toyshop/Models/example_toylist.dart';
 import 'package:toyshop/Transaaction/momo.dart';
 import 'package:toyshop/Transaaction/momopaymentui.dart';
-import 'package:toyshop/Transaaction/payment.dart';
+// import 'package:toyshop/Transaaction/payment.dart';
 import 'package:toyshop/components/loginsignup.dart';
 import 'package:toyshop/components/toydetail.dart';
 
@@ -82,7 +84,7 @@ class _CartRouteState extends State<CartRoute> {
                           title:Text(cart[index].item.name, style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 20),),
                           subtitle:Row(
                             children: [  
-                              Container(
+                              SizedBox(
                                 height: 30,
                                 width: 30,
                                 child: ElevatedButton(
@@ -107,7 +109,7 @@ class _CartRouteState extends State<CartRoute> {
                                 margin: const EdgeInsets.symmetric(horizontal: 5),
                                 child: Center(child: Text(cart[index].qty.toString(), style: const TextStyle(fontSize: 20),))
                               ),
-                              Container(
+                              SizedBox(
                                 height: 30,
                                 width: 30,
                                 child: ElevatedButton(
@@ -164,7 +166,7 @@ class _CartRouteState extends State<CartRoute> {
               SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(
-                  child: Text('Pay Now'),
+                  
                   style: ElevatedButton.styleFrom(
                     foregroundColor: Colors.white,
                     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
@@ -178,28 +180,29 @@ class _CartRouteState extends State<CartRoute> {
                         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
                         content: Text('Do you want to proceed to make payment of GHC $total for the items?'),
                         actions: [
-                          ElevatedButton(child: const Text('Proceed'),onPressed: (){
+                          ElevatedButton(onPressed: (){
                             // int x = gettotal();
                             Navigator.pop(context);
                             //flutter package approach
                             // Payment(plugin:plugin, paykey:paystackkey, amount:total).makePayment(context);
                             // for momo
                             Navigator.push(context,MaterialPageRoute(builder: (context)=>MomoPaymentUI(amount: total)));
-                          },
-                          style: ElevatedButton.styleFrom(
-                            foregroundColor: Colors.white,
-                            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
-                            backgroundColor: Colors.deepPurple
-                          ),
+                            },
+                            style: ElevatedButton.styleFrom(
+                              foregroundColor: Colors.white,
+                              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
+                              backgroundColor: Colors.deepPurple
+                            ),
+                            child: const Text('Proceed'),
                           ),
                           ElevatedButton(
-                            child: const Text('Cancel'),
                             onPressed: (){Navigator.pop(context);},
                             style: ElevatedButton.styleFrom(
                               foregroundColor: Colors.white,
                               shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
                               backgroundColor: Colors.deepPurple
                             ),
+                            child: const Text('Cancel'),
                           )
                         ],  
                       );
@@ -213,7 +216,6 @@ class _CartRouteState extends State<CartRoute> {
                         content: const Text('Please login to your account to proceed or create and account if you dont have one'),
                         actions: [
                           ElevatedButton(
-                            child: const Text('Login'),
                             onPressed: (){
                               Navigator.pop(context);
                               Navigator.push(context,MaterialPageRoute(builder: (context)=>const LoginSignUP()));
@@ -223,9 +225,10 @@ class _CartRouteState extends State<CartRoute> {
                               shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
                               backgroundColor: Colors.deepPurple
                             ),
+                            child: const Text('Login'),
                           ),
                           ElevatedButton(
-                            child: const Text('Signup'),
+                            
                             onPressed: (){
                               Navigator.pop(context);
                               Navigator.push(context,MaterialPageRoute(builder: (context)=>const LoginSignUP()));
@@ -235,13 +238,16 @@ class _CartRouteState extends State<CartRoute> {
                               shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
                               backgroundColor: Colors.deepPurple
                             ),
+                            child: const Text('Signup'),
                           )
                         ],  
                       );
                     }
                     );
                   }
-                },),
+                },
+                child: const Text('Pay Now'),
+                ),
               )
             ],)
         ],

@@ -32,8 +32,8 @@ class _ShopWithSliverRouteState extends State<ShopWithSliverRoute> {
             LimitedBox(
               maxHeight: MediaQuery.of(context).size.height*.06,
               child: TextField(
-                onSubmitted: (value){print('-=-=-=-on done triggered-=-=$value');},
-                onEditingComplete: (){print("--=-=entered-=-=- '${searchCtrl.text}' was searched ");},
+                onSubmitted: (value){/*print('-=-=-=-on done triggered-=-=$value');*/},
+                onEditingComplete: (){/*print("--=-=entered-=-=- '${searchCtrl.text}' was searched ");*/},
                 decoration: const InputDecoration(
                   contentPadding: EdgeInsets.symmetric(horizontal: 5, vertical: 1),
                   border: OutlineInputBorder(),

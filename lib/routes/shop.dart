@@ -31,8 +31,8 @@ class _ShopRouteState extends State<ShopRoute> {
             LimitedBox(
               maxHeight: MediaQuery.of(context).size.height*.06,
               child: TextField(
-                onSubmitted: (value){print('-=-=-=-on done triggered-=-=$value');},
-                onEditingComplete: (){print("--=-=entered-=-=- '${searchCtrl.text}' was searched ");},
+                onSubmitted: (value){/*print('-=-=-=-on done triggered-=-=$value');*/},
+                onEditingComplete: (){/*print("--=-=entered-=-=- '${searchCtrl.text}' was searched ");*/},
                 decoration: const InputDecoration(
                   contentPadding: EdgeInsets.symmetric(horizontal: 5, vertical: 1),
                   border: OutlineInputBorder(),
@@ -45,12 +45,6 @@ class _ShopRouteState extends State<ShopRoute> {
               ),
             ),
             const SizedBox(height:10),
-            // ElevatedButton(onPressed: (){AllToys.loggedin = !AllToys.loggedin;}, child: const Text('Dummy Login Logoff Switch',style: TextStyle(color: Colors.white),),
-            //   style: ElevatedButton.styleFrom(
-            //     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(2)),
-            //     backgroundColor: Colors.red[200]
-            //   ),
-            // ),
             const Align(alignment:Alignment.centerLeft,child: Text('Upcoming',style: TextStyle(fontWeight: FontWeight.bold),)),
             const SizedBox(height:5),
             SizedBox(

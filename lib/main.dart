@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:toyshop/Models/example_toylist.dart';
 import 'package:toyshop/routes/cart.dart';
-import 'package:toyshop/routes/shop.dart';
+// import 'package:toyshop/routes/shop.dart';
 import 'package:toyshop/routes/profile.dart';
 import 'package:toyshop/routes/shopwithsliver.dart';
 import 'package:toyshop/routes/wishlist.dart';
@@ -51,11 +51,9 @@ class _InitAreaState extends State<InitArea> {
 
   Widget _badges(IconData icon, int data){
     return Center(
-      child: Container(
-        // padding: EdgeInsets.only(bottom: 10),
+      child: SizedBox(
         height: 45,
         width: 45,
-        // color:Colors.blue,
         child: Stack(children: [
         Align(alignment:Alignment.center,child: Icon(icon,)),
         if(data>0)Align(

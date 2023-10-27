@@ -14,7 +14,7 @@ class _ProfileLogedInState extends State<ProfileLogedIn> {
     return DefaultTabController(
       length: 3,
       child: Padding(
-        padding: EdgeInsets.all(8),
+        padding: const EdgeInsets.all(8),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.center,

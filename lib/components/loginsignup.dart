@@ -36,6 +36,7 @@ class _LoginSignUPState extends State<LoginSignUP> {
                     if(value!.isEmpty){
                       return 'cant be empty';
                     }
+                    return value;
                   },
                   decoration: const InputDecoration(
                     border: OutlineInputBorder(),
@@ -50,6 +51,7 @@ class _LoginSignUPState extends State<LoginSignUP> {
                     if(value!.isEmpty){
                       return 'cant be empty';
                     }
+                    return value;
                   },
                   obscureText: true,
                   decoration: const InputDecoration(
@@ -69,13 +71,13 @@ class _LoginSignUPState extends State<LoginSignUP> {
                       AllToys.loggedin = true;
                       Navigator.pop(context);
                     }, 
-                    child: const Text('Login'),
                     style: ElevatedButton.styleFrom(
                       padding: const EdgeInsets.symmetric(vertical: 15),
                       backgroundColor: Colors.deepPurple,
                       foregroundColor: Colors.white,
                       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5))
                     ),
+                    child: const Text('Login'),
                       
                   )
                 ),

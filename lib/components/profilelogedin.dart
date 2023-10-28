@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:toyshop/Models/example_toylist.dart';
+import 'package:toyshop/components/trackingtransaction.dart';
+import 'package:toyshop/components/transactionshistory.dart';
 
 class ProfileLogedIn extends StatefulWidget {
   const ProfileLogedIn({super.key});
@@ -11,6 +13,7 @@ class ProfileLogedIn extends StatefulWidget {
 class _ProfileLogedInState extends State<ProfileLogedIn> {
   @override
   Widget build(BuildContext context) {
+    
     return DefaultTabController(
       length: 3,
       child: Padding(
@@ -49,12 +52,13 @@ class _ProfileLogedInState extends State<ProfileLogedIn> {
                 Tab(text: 'settings',),
               ]
             ),
-            const Expanded(
+            Expanded(
               child: TabBarView(
                 children: [
-                  Center(child: Text('transactions history'),),
-                  Center(child: Text('No pending transaction to track'),),
-                  Center(child: Text('make settings changes'),),
+                  // const Center(child: Text('No transactions history available'),),
+                  const TransactionsHistory(),
+                  AllToys.tracklist.isEmpty?const Center(child: Text('No pending transaction to track'),):const TrackingTransaction(),
+                  const Center(child: Text('make settings changes'),),
                 ],))
           ],
         ),

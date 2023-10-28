@@ -85,46 +85,28 @@ class _WishlistRouteState extends State<WishlistRoute> {
                         Text(wishlist[index].item.price.toStringAsFixed(2), style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 20),),
                         Row(
                           children: [
-                            SizedBox(
-                              height: 30,
-                              width: 30,
-                              child: ElevatedButton(
-                                onPressed: (){
-                                  setState(() {
-                                    if(wishlist[index].qty>1){
-                                      wishlist[index].qty -=1;
-                                    }
-                                  });
-                                },
-                                style: ElevatedButton.styleFrom(
-                                  foregroundColor: Colors.white,
-                                  shape: const RoundedRectangleBorder(borderRadius: BorderRadius.only(topLeft:Radius.circular(20),bottomLeft: Radius.circular(20))),
-                                  backgroundColor: Colors.deepPurple
-                                ),
-                                child: const Text('')
-                                ),
-                            ),
+                            InkWell(
+                              onTap: (){
+                                setState(() {
+                                  if(wishlist[index].qty>1){
+                                    wishlist[index].qty -=1;
+                                  }
+                                });
+                              },
+                              child: const Icon(Icons.remove_circle, color: Colors.deepPurple,)
+                              ),
                             Container(
                               width: 30,
                               margin: const EdgeInsets.symmetric(horizontal: 5),
                               child: Center(child: Text(wishlist[index].qty.toString()))
                             ),
-                            SizedBox(
-                              height: 30,
-                              width: 30,
-                              child: ElevatedButton(
-                                onPressed: (){
-                                  setState(() {
-                                      wishlist[index].qty +=1;
-                                  });
-                                }, 
-                                style: ElevatedButton.styleFrom(
-                                  foregroundColor: Colors.white,
-                                  shape: const RoundedRectangleBorder(borderRadius: BorderRadius.only(topRight:Radius.circular(20),bottomRight: Radius.circular(20))),
-                                  backgroundColor: Colors.deepPurple
-                                ),
-                                child: const Text('')
-                              ),
+                            InkWell(
+                              onTap: (){
+                                setState(() {
+                                    wishlist[index].qty +=1;
+                                });
+                              }, 
+                              child: const Icon(Icons.add_circle, color: Colors.deepPurple)
                             ),
                           ],
                         ),

@@ -84,48 +84,30 @@ class _CartRouteState extends State<CartRoute> {
                           title:Text(cart[index].item.name, style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 20),),
                           subtitle:Row(
                             children: [  
-                              SizedBox(
-                                height: 30,
-                                width: 30,
-                                child: ElevatedButton(
-                                  onPressed: (){
-                                    setState(() {
-                                      if(cart[index].qty>1){
-                                        cart[index].qty -=1;
-                                        gettotal();
-                                      }
-                                    });
-                                  },
-                                  style: ElevatedButton.styleFrom(
-                                    foregroundColor: Colors.white,
-                                    shape: const RoundedRectangleBorder(borderRadius: BorderRadius.only(topLeft:Radius.circular(20),bottomLeft: Radius.circular(20))),
-                                    backgroundColor: Colors.deepPurple
-                                  ),
-                                  child: const Text('')
-                                  ),
-                              ),
+                              InkWell(
+                                onTap: (){
+                                  setState(() {
+                                    if(cart[index].qty>1){
+                                      cart[index].qty -=1;
+                                      gettotal();
+                                    }
+                                  });
+                                },
+                                child: const Icon(Icons.remove_circle, color: Colors.deepPurple,)
+                                ),
                               Container(
                                 width: 30,
                                 margin: const EdgeInsets.symmetric(horizontal: 5),
                                 child: Center(child: Text(cart[index].qty.toString(), style: const TextStyle(fontSize: 20),))
                               ),
-                              SizedBox(
-                                height: 30,
-                                width: 30,
-                                child: ElevatedButton(
-                                  onPressed: (){
-                                    setState(() {
-                                        cart[index].qty +=1;
-                                        gettotal();
-                                    });
-                                  }, 
-                                  style: ElevatedButton.styleFrom(
-                                    foregroundColor: Colors.white,
-                                    shape: const RoundedRectangleBorder(borderRadius: BorderRadius.only(topRight:Radius.circular(20),bottomRight: Radius.circular(20))),
-                                    backgroundColor: Colors.deepPurple
-                                  ),
-                                  child: const Text('')
-                                ),
+                              InkWell(
+                                onTap: (){
+                                  setState(() {
+                                      cart[index].qty +=1;
+                                      gettotal();
+                                  });
+                                }, 
+                                child: const Icon(Icons.add_circle, color: Colors.deepPurple)
                               ),
                             ],),    
                           leading: Hero(tag:cart[index].item.thumbnail,child: CircleAvatar(radius: 25, backgroundImage: AssetImage(cart[index].item.thumbnail))),

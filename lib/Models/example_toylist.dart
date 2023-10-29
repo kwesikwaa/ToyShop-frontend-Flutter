@@ -1,5 +1,6 @@
 import 'package:toyshop/Models/cartitem.dart';
 import 'package:toyshop/Models/toymodel.dart';
+import 'package:toyshop/Models/transactionshistorymodel.dart';
 import 'package:toyshop/Models/wishitem.dart';
 
 
@@ -106,7 +107,7 @@ class AllToys{
     ),
   ];
 
-  static bool loggedin = false;
+  static bool loggedin = true;
 
   static List<CartItem> cartlist = [
     
@@ -181,5 +182,46 @@ class AllToys{
       qty: 2)
   
   ];
+
+              
+
+  static List<TransactionsHistoryModel> transactionhis = [
+    TransactionsHistoryModel(
+      id: '3acae32d5beb17', 
+      status: 'in progress', 
+      datetime: 'datetime', 
+      customername: 'maame esi', 
+      customercontact: '124354546554874545'
+    ),
+    TransactionsHistoryModel(
+      id: '941828d630f6a0', 
+      status: 'completed', 
+      datetime: 'datetime', 
+      customername: 'esiedua', 
+      customercontact: '124354546554874545'
+    ),
+    TransactionsHistoryModel(
+      id: 'ce2ab1c862d16d', 
+      status: 'completed', 
+      datetime: 'datetime', 
+      customername: 'leo messi', 
+      customercontact: '124354546554874545'
+    ),
+    TransactionsHistoryModel(
+      id: '7e60726736c512', 
+      status: 'unsuccessful', 
+      datetime: 'datetime', 
+      customername: 'bob marley', 
+      customercontact: '124354546554874545'
+    ),
+    TransactionsHistoryModel(
+      id: '58d3ab8140e1ef', 
+      status: 'completed', 
+      datetime: 'datetime', 
+      customername: 'kwame nkrumah', 
+      customercontact: '124354546554874545'
+    ),
+  ];
+
 }
 

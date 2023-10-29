@@ -45,7 +45,7 @@ class _CartRouteState extends State<CartRoute> {
     bool nothing = AllToys.cartlist.isEmpty;
     return Padding(
       padding: const EdgeInsets.all(8.0),
-      child: nothing?const Center(child: Text('No Toys To Buy? Add a few'),):Column(
+      child: nothing?const Center(child: Text('no toys to b uy? add a few'),):Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Expanded(

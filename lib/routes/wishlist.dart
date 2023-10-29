@@ -15,6 +15,20 @@ class WishlistRoute extends StatefulWidget {
 class _WishlistRouteState extends State<WishlistRoute> {
   final wishlist = AllToys.wishlist;
 
+  _shortnotifier(String message){
+    showDialog(context: context, 
+    builder: (context)=>AlertDialog(
+      
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
+      content: Row(children:[const Icon(Icons.check_circle_outline, color: Colors.white,),const SizedBox(width:10),Expanded(child: Text(message,maxLines: 3, style: const TextStyle(color: Colors.white),))]),
+      backgroundColor: Colors.deepPurple,
+      
+    )
+    
+    );
+    
+  }
+
   _movetocart(int index, {int? qty=1}){
     final movethis = wishlist[index];
     final createnew = CartItem(item: movethis.item, qty: qty!);
@@ -32,15 +46,19 @@ class _WishlistRouteState extends State<WishlistRoute> {
     if(exists){
       if(AllToys.cartlist[existsAtIndex].qty>movethis.qty){
         AllToys.wishlist.removeAt(index);
+        _shortnotifier('Item already exists in the cart and will now be removed form wishlist');
       }
       else{
         AllToys.cartlist[existsAtIndex].qty = qty;
         AllToys.wishlist.removeAt(index);
+        _shortnotifier('Item already exists in the cart but quantity update has been made');
       }
       
     }
     else{
       AllToys.cartlist.add(createnew);
+      AllToys.wishlist.removeAt(index);
+      _shortnotifier('Successfully added to cart!');
 
     }
   }
@@ -51,7 +69,7 @@ class _WishlistRouteState extends State<WishlistRoute> {
     bool nothing = wishlist.isEmpty;
     return  Padding(
       padding: const EdgeInsets.all(8.0),
-      child: nothing?const Center(child: Text('No wishes yes, make a wish'),):ListView.builder(
+      child: nothing?const Center(child: Text('no wishes yet. make a wish'),):ListView.builder(
         itemCount: wishlist.length,
         itemBuilder: (context,index){
           

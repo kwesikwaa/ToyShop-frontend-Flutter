@@ -86,7 +86,7 @@ class _ToyItemState extends State<ToyItem> {
         height: MediaQuery.of(context).size.height,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10),
-          color: const Color.fromARGB(255, 213, 221, 228),
+          color:  Colors.deepPurple
           // boxShadow: [BoxShadow(
           //   color: Colors.grey.withOpacity(0.3),
           //   spreadRadius: 2,
@@ -95,7 +95,7 @@ class _ToyItemState extends State<ToyItem> {
           // )]
         ),
         child: Padding(
-          padding: const EdgeInsets.only(left:8,right:8,top:8,bottom:0),
+          padding: const EdgeInsets.only(left:8,right:8,top:8,bottom:8),
           child: Column(
                   children: [
                     Expanded(
@@ -107,25 +107,25 @@ class _ToyItemState extends State<ToyItem> {
                           child: Hero(tag:widget.toy.thumbnail,child: Image.asset(widget.toy.thumbnail, fit: BoxFit.cover,))),
                       ),
                     ),
-                    Align(alignment:Alignment.centerLeft,child: Text(widget.toy.name, style: const TextStyle(fontSize: 20,fontWeight: FontWeight.bold),)),
+                    Align(alignment:Alignment.centerLeft,child: Text(widget.toy.name, style: const TextStyle(color: Colors.white,fontSize: 20,fontWeight: FontWeight.bold),)),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        IconButton(
-                          onPressed: (){
+                        InkWell(
+                          onTap: (){
                             togglewishlist(widget.toy);
                             // force rebuild for icon
                             setState(() {});
                           },
-                          icon: Icon(Icons.favorite, color: wished(widget.toy)?Colors.pink:Colors.grey,)),
-                        Text("₵ ${widget.toy.price.toString()}", style: const TextStyle(fontSize:20,fontWeight: FontWeight.bold),),
-                        IconButton(
-                          onPressed: (){
+                          child: Icon(Icons.favorite, color: wished(widget.toy)?Colors.pink:Colors.white,)),
+                        Text("₵ ${widget.toy.price.toString()}", style: const TextStyle(fontSize:20,fontWeight: FontWeight.bold,color: Colors.white),),
+                        InkWell(
+                          onTap: (){
                             togglecart(widget.toy);
                             // force rebuild for icon
                             setState(() {});
                           },
-                          icon: Icon(Icons.shopping_basket_rounded, color: carted(widget.toy)?Colors.pink:Colors.grey,)),
+                          child: Icon(Icons.shopping_basket_rounded, color: carted(widget.toy)?Colors.pink:Colors.white,)),
                       ]
                       
                     ),

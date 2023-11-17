@@ -2,9 +2,9 @@
 
 # ABODUABA TOYSHOP
 
-This is a personal e-commerce project to for my 3D works.
+This is a personal e-commerce playground to for my 3D works.
 
-Frontend is built with flutter and utilises Hooks, Riverpod, Hive for loal persistnce
+Frontend is built with flutter and utilises Hive for loal persistnce and ValueNotifier for state management
 
 PayStack(a stripe company) for Payment
 

@@ -9,7 +9,7 @@ import 'package:toyshop/routes/shopwithsliver.dart';
 import 'package:toyshop/routes/wishlist.dart';
 
 void main() {
-  runApp(const ProviderScope(child: MyApp()));
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {

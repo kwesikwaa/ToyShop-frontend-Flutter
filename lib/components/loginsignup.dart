@@ -68,7 +68,7 @@ class _LoginSignUPState extends State<LoginSignUP> {
                   width: double.infinity,
                   child: ElevatedButton(
                     onPressed: (){
-                      AllToys.loggedin = true;
+                      AllToys.loggedin.value = true;
                       Navigator.pop(context);
                     }, 
                     style: ElevatedButton.styleFrom(

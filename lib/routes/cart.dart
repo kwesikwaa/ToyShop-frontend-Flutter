@@ -64,7 +64,9 @@ class _CartRouteState extends State<CartRoute> {
                     onDismissed: (DismissDirection dir){
                       setState(() {
                         cart.removeAt(index);
+                        AllToys.carttotal.value = AllToys.cartlist.length;
                       });
+                      
                     },
                     background: Container(
                       color: Colors.red,
@@ -156,7 +158,8 @@ class _CartRouteState extends State<CartRoute> {
                   ),
                   onPressed: (){
                   final total = gettotal();
-                  if(AllToys.loggedin){
+                  // may have to come back to this
+                  if(AllToys.loggedin.value){
                     showDialog(context: context, builder: (builder){
                       return AlertDialog(
                         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),

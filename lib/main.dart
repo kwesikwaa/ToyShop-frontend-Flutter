@@ -88,7 +88,12 @@ class _InitAreaState extends State<InitArea> {
         label: 'cart',
       ),
       BottomNavigationBarItem(
-        icon: Icon(AllToys.loggedin?Icons.account_circle:Icons.no_accounts_outlined),
+        icon: ValueListenableBuilder(
+          valueListenable: AllToys.loggedin,
+          builder: (context,loggedin,child) {
+            return Icon(loggedin?Icons.account_circle:Icons.no_accounts_outlined);
+          }
+        ),
         label: 'Profile',
       ),
     ];

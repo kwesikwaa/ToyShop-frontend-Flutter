@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:toyshop/Models/cartitem.dart';
 import 'package:toyshop/Models/toymodel.dart';
 import 'package:toyshop/Models/transactionshistorymodel.dart';
@@ -107,7 +108,9 @@ class AllToys{
     ),
   ];
 
-  static bool loggedin = true;
+  static ValueNotifier<bool> loggedin = ValueNotifier(true);
+  static ValueNotifier<int> carttotal = ValueNotifier(0);
+  static ValueNotifier<int> wishtotal = ValueNotifier(0);
 
   static List<CartItem> cartlist = [
     

@@ -34,7 +34,7 @@ class _ProfileLogedInState extends State<ProfileLogedIn> {
             const SizedBox(height: 5,),
             ElevatedButton.icon(
               onPressed: (){
-                AllToys.loggedin = false;
+                AllToys.loggedin.value = false;
                 
                 // just for rebuild
                 setState(() {});

@@ -44,6 +44,7 @@ class _ToyItemState extends State<ToyItem> {
     else{
       AllToys.wishlist.add(WishItem(item: thisitem, qty: 1));
     }
+    AllToys.wishtotal.value = AllToys.wishlist.length;
   }
   
   togglecart(Toy thisitem){
@@ -63,6 +64,7 @@ class _ToyItemState extends State<ToyItem> {
     else{
       AllToys.cartlist.add(CartItem(item: thisitem, qty: 1));
     }
+    AllToys.carttotal.value = AllToys.cartlist.length;
   }     
     
   bool carted(Toy x){

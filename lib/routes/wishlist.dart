@@ -77,6 +77,7 @@ class _WishlistRouteState extends State<WishlistRoute> {
             onDismissed: (DismissDirection dir){
               setState(() {
                 wishlist.removeAt(index);
+                AllToys.wishtotal.value = AllToys.wishlist.length;
               });
             },
             background: Container(

@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:toyshop/Models/example_toylist.dart';
@@ -49,22 +50,28 @@ class _InitAreaState extends State<InitArea> {
     ProfileRoute()
   ];
 
-  Widget _badges(IconData icon, int data){
+  Widget _badges(IconData icon, ValueListenable listener){
     return Center(
       child: SizedBox(
         height: 45,
         width: 45,
         child: Stack(children: [
         Align(alignment:Alignment.center,child: Icon(icon,)),
-        if(data>0)Align(
-          alignment: Alignment.topRight,
-          child:Container(
-            height: 20,
-            width: 20,
-            decoration: const BoxDecoration(color: Colors.pink, shape: BoxShape.circle),
-            child: Center(child:Text(data.toString(), style: const TextStyle(fontSize:10, color: Colors.white, fontWeight: FontWeight.bold),))
-            )
-          )
+        ValueListenableBuilder(valueListenable: listener, 
+          builder: (builder,value,child){
+           if(value>0){
+            return Align(
+              alignment: Alignment.topRight,
+              child:Container(
+                height: 20,
+                width: 20,
+                decoration: const BoxDecoration(color: Colors.pink, shape: BoxShape.circle),
+                child: Center(child:Text(value.toString(), style: const TextStyle(fontSize:10, color: Colors.white, fontWeight: FontWeight.bold),))
+                )
+              );
+           } return Container();
+          })
+        
       ],)),
     );
   }
@@ -80,11 +87,11 @@ class _InitAreaState extends State<InitArea> {
         label: 'Shop',
       ),
       BottomNavigationBarItem(
-        icon: _badges(Icons.favorite, AllToys.wishlist.length),
+        icon: _badges(Icons.favorite, AllToys.wishtotal),
         label: 'Wishlist',
       ),
       BottomNavigationBarItem(
-        icon: _badges(Icons.shopping_basket, AllToys.cartlist.length),
+        icon: _badges(Icons.shopping_basket, AllToys.carttotal),
         label: 'cart',
       ),
       BottomNavigationBarItem(

@@ -11,7 +11,7 @@ class ProfileRoute extends StatelessWidget {
     return ValueListenableBuilder(
       valueListenable: AllToys.loggedin,
       builder: (context, loggedin, child){
-        if(loggedin){
+        if(!loggedin){
           return Padding(
             padding: const EdgeInsets.all(8.0),
             child: Column(

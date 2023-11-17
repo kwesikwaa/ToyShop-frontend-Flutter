@@ -54,6 +54,7 @@ class _ToyDetailState extends State<ToyDetail> {
     else{
       AllToys.cartlist.add(CartItem(item: widget.toy, qty: 1));
     }
+    AllToys.carttotal.value = AllToys.cartlist.length;
   }     
  
   _addtowishlist(){
@@ -73,6 +74,7 @@ class _ToyDetailState extends State<ToyDetail> {
     else{
       AllToys.wishlist.add(WishItem(item: widget.toy, qty: qty));
     }
+    AllToys.wishtotal.value = AllToys.wishlist.length;
   }
 
   @override

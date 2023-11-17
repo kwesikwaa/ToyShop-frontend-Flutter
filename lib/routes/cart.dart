@@ -22,7 +22,7 @@ class _CartRouteState extends State<CartRoute> {
   final cart = AllToys.cartlist;
 
   final plugin = PaystackPlugin();
-  final paystackkey = 'pk_test_0e0a3ee77f7c00b35972173c6c8a7a57ea83d531';
+  final paystackkey = 'key';
 
   gettotal(){
     double total = 0; 

@@ -19,7 +19,7 @@ class _CustomerEditWidgetState extends State<CustomerEditWidget> {
   _updatefeedback(){
     showDialog(context: context, builder: (context){
       return AlertDialog(
-        backgroundColor: Colors.deepPurple,
+        backgroundColor: Colors.black87,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
         content: const Row(
           children: [ 
@@ -54,7 +54,7 @@ class _CustomerEditWidgetState extends State<CustomerEditWidget> {
                 edit = !edit; 
                 edit?null:_updatefeedback();
                 setState(() {});}, 
-              child: Icon(edit?Icons.save:Icons.edit_square, size: 30, color: Colors.deepPurple,))
+              child: Icon(edit?Icons.save:Icons.edit_square, size: 30, color: Colors.black87,))
           ],
         ),
         const SizedBox(height: 10,),

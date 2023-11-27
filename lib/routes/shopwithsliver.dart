@@ -57,7 +57,7 @@ class _ShopWithSliverRouteState extends State<ShopWithSliverRoute> {
                       title: Container(
                         padding: const EdgeInsets.all(5),
                         decoration: BoxDecoration(
-                          color: Colors.deepPurple,
+                          color: Colors.grey[900],
                           borderRadius: BorderRadius.circular(7)
                         ),
                         child: const Text('Coming Soon',style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold),)),
@@ -101,7 +101,7 @@ class _ShopWithSliverRouteState extends State<ShopWithSliverRoute> {
                           insets: const EdgeInsets.symmetric(horizontal: 50)  
                         ),
                         tabs: const [
-                          Tab(text: 'all',),
+                          Tab(child: Text('als', style: TextStyle(color: Colors.black87),)),
                           Tab(text: 'cars',),
                           Tab(text: 'characters',),
                         ]),

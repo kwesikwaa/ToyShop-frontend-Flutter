@@ -30,7 +30,7 @@ class ProfileRoute extends StatelessWidget {
                     },
                       style: ElevatedButton.styleFrom(
                         padding: const EdgeInsets.symmetric(vertical: 15),
-                        backgroundColor: Colors.deepPurple,
+                        backgroundColor: Colors.black87,
                         foregroundColor: Colors.white,
                         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5))
                       ),

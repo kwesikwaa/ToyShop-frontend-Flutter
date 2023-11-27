@@ -119,7 +119,7 @@ class _ToyDetailState extends State<ToyDetail> {
                       height: 60,
                       width: 60,
                       decoration: BoxDecoration(
-                        color: Colors.deepPurple,
+                        color: Colors.black87,
                         borderRadius: BorderRadius.circular(5)
                       ),
                         child: Icon(Icons.favorite, color: wished(widget.toy)?Colors.pink:Colors.white,) ,
@@ -142,7 +142,7 @@ class _ToyDetailState extends State<ToyDetail> {
                                 }
                               });
                             },
-                            child: const Icon(Icons.remove_circle, color: Colors.deepPurple,size: 35,)
+                            child: const Icon(Icons.remove_circle, color: Colors.black87,size: 35,)
                             ),
                           Container(
                             width: 30,
@@ -155,7 +155,7 @@ class _ToyDetailState extends State<ToyDetail> {
                                   qty +=1;
                               });
                             }, 
-                            child: const Icon(Icons.add_circle, color: Colors.deepPurple, size: 35,)
+                            child: const Icon(Icons.add_circle, color: Colors.black87, size: 35,)
                           ),
                         ],
                       ),
@@ -171,7 +171,7 @@ class _ToyDetailState extends State<ToyDetail> {
                       height: 60,
                       width: 60,
                       decoration: BoxDecoration(
-                        color: Colors.deepPurple,
+                        color: Colors.black87,
                         borderRadius: BorderRadius.circular(5)
                       ),
                       child: Icon(Icons.shopping_basket, color: carted(widget.toy)?Colors.pink: Colors.white,) ,

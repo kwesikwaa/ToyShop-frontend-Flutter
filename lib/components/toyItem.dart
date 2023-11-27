@@ -88,13 +88,13 @@ class _ToyItemState extends State<ToyItem> {
         height: MediaQuery.of(context).size.height,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10),
-          color:  Colors.deepPurple
-          // boxShadow: [BoxShadow(
-          //   color: Colors.grey.withOpacity(0.3),
-          //   spreadRadius: 2,
-          //   blurRadius: 3,
-          //   offset: Offset(0, 3)
-          // )]
+          // color:  Colors.white60
+          boxShadow: const [BoxShadow(
+            color: Colors.black12,
+            spreadRadius: 2,
+            blurRadius: 3,
+            offset: Offset(0, 3)
+          )]
         ),
         child: Padding(
           padding: const EdgeInsets.only(left:8,right:8,top:8,bottom:8),
@@ -109,7 +109,7 @@ class _ToyItemState extends State<ToyItem> {
                           child: Hero(tag:widget.toy.thumbnail,child: Image.asset(widget.toy.thumbnail, fit: BoxFit.cover,))),
                       ),
                     ),
-                    Align(alignment:Alignment.centerLeft,child: Text(widget.toy.name, style: const TextStyle(color: Colors.white,fontSize: 20,fontWeight: FontWeight.bold),)),
+                    Align(alignment:Alignment.centerLeft,child: Text(widget.toy.name, style: const TextStyle(color: Colors.black87,fontSize: 20,fontWeight: FontWeight.bold),)),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -119,15 +119,15 @@ class _ToyItemState extends State<ToyItem> {
                             // force rebuild for icon
                             setState(() {});
                           },
-                          child: Icon(Icons.favorite, color: wished(widget.toy)?Colors.pink:Colors.white,)),
-                        Text("₵ ${widget.toy.price.toString()}", style: const TextStyle(fontSize:20,fontWeight: FontWeight.bold,color: Colors.white),),
+                          child: Icon(Icons.favorite, color: wished(widget.toy)?Colors.pink:Colors.black38,)),
+                        Text("₵ ${widget.toy.price.toString()}", style: const TextStyle(fontSize:20,fontWeight: FontWeight.bold,color: Colors.black87),),
                         InkWell(
                           onTap: (){
                             togglecart(widget.toy);
                             // force rebuild for icon
                             setState(() {});
                           },
-                          child: Icon(Icons.shopping_basket_rounded, color: carted(widget.toy)?Colors.pink:Colors.white,)),
+                          child: Icon(Icons.shopping_basket_rounded, color: carted(widget.toy)?Colors.pink:Colors.black38,)),
                       ]
                       
                     ),

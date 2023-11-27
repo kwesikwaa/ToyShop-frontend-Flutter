@@ -123,8 +123,8 @@ class _InitAreaState extends State<InitArea> {
                 currentroute = value;
               });
             },
-            selectedItemColor: Colors.deepPurple,
-            unselectedItemColor: Colors.grey,
+            selectedItemColor: Colors.grey[900],
+            unselectedItemColor: Colors.grey[500],
           ),
         ),
         body: routes[currentroute],

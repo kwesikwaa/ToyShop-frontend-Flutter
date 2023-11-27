@@ -84,7 +84,7 @@ class _ShopRouteState extends State<ShopRoute> {
                 insets: const EdgeInsets.symmetric(horizontal: 50)  
               ),
               tabs: const [
-                Tab(text: 'all',),
+                Tab(text: 'all'),
                 Tab(text: 'cars',),
                 Tab(text: 'characters',),
               ]),

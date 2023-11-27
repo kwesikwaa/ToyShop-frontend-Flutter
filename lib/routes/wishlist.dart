@@ -21,7 +21,7 @@ class _WishlistRouteState extends State<WishlistRoute> {
       
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
       content: Row(children:[const Icon(Icons.check_circle_outline, color: Colors.white,),const SizedBox(width:10),Expanded(child: Text(message,maxLines: 3, style: const TextStyle(color: Colors.white),))]),
-      backgroundColor: Colors.deepPurple,
+      backgroundColor: Colors.black87,
       
     )
     
@@ -112,7 +112,7 @@ class _WishlistRouteState extends State<WishlistRoute> {
                                   }
                                 });
                               },
-                              child: const Icon(Icons.remove_circle, color: Colors.deepPurple,)
+                              child: const Icon(Icons.remove_circle, color: Colors.black87,)
                               ),
                             Container(
                               width: 30,
@@ -125,7 +125,7 @@ class _WishlistRouteState extends State<WishlistRoute> {
                                     wishlist[index].qty +=1;
                                 });
                               }, 
-                              child: const Icon(Icons.add_circle, color: Colors.deepPurple)
+                              child: const Icon(Icons.add_circle, color: Colors.black87)
                             ),
                           ],
                         ),
@@ -151,7 +151,7 @@ class _WishlistRouteState extends State<WishlistRoute> {
                       style: ElevatedButton.styleFrom(
                         foregroundColor: Colors.white,
                         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
-                        backgroundColor: Colors.deepPurple
+                        backgroundColor: Colors.black87
                       ),
                       child: const Icon(Icons.shopping_basket) ,
                     ) ,

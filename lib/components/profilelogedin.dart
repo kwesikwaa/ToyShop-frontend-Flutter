@@ -42,7 +42,7 @@ class _ProfileLogedInState extends State<ProfileLogedIn> {
               icon: const Icon(Icons.logout), 
               label: const Text('Logout'),
               style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.deepPurple,
+                backgroundColor: Colors.black87,
                 foregroundColor: Colors.white,
                 shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5))
               )
@@ -51,9 +51,9 @@ class _ProfileLogedInState extends State<ProfileLogedIn> {
             TabBar(
               indicator: UnderlineTabIndicator(borderRadius: BorderRadius.circular(5),borderSide: const BorderSide(width: 5)),
               tabs: const [
-                Tab(text: 'transactions',),
-                Tab(text: 'track',),
-                Tab(text: 'settings',),
+                Tab(child: Text('transactions', style: TextStyle(color: Colors.black87),),),
+                Tab(child: Text('track', style: TextStyle(color: Colors.black87),)),
+                Tab(child: Text('settings', style: TextStyle(color: Colors.black87),)),
               ]
             ),
             Expanded(

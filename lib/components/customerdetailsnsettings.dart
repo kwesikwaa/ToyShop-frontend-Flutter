@@ -31,7 +31,7 @@ class _CustomerDetailsNSettingsState extends State<CustomerDetailsNSettings> {
               child: ElevatedButton(
                 onPressed: (){},
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.deepPurple,
+                  backgroundColor: Colors.black87,
                   shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
                   foregroundColor: Colors.white
                 ),

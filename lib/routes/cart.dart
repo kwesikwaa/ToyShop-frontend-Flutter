@@ -95,7 +95,7 @@ class _CartRouteState extends State<CartRoute> {
                                     }
                                   });
                                 },
-                                child: const Icon(Icons.remove_circle, color: Colors.deepPurple,)
+                                child: const Icon(Icons.remove_circle, color: Colors.black87,)
                                 ),
                               Container(
                                 width: 30,
@@ -109,7 +109,7 @@ class _CartRouteState extends State<CartRoute> {
                                       gettotal();
                                   });
                                 }, 
-                                child: const Icon(Icons.add_circle, color: Colors.deepPurple)
+                                child: const Icon(Icons.add_circle, color: Colors.black87)
                               ),
                             ],),    
                           leading: Hero(tag:cart[index].item.thumbnail,child: CircleAvatar(radius: 25, backgroundImage: AssetImage(cart[index].item.thumbnail))),
@@ -154,7 +154,7 @@ class _CartRouteState extends State<CartRoute> {
                   style: ElevatedButton.styleFrom(
                     foregroundColor: Colors.white,
                     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
-                    backgroundColor: Colors.deepPurple
+                    backgroundColor: Colors.black87
                   ),
                   onPressed: (){
                   final total = gettotal();
@@ -176,7 +176,7 @@ class _CartRouteState extends State<CartRoute> {
                             style: ElevatedButton.styleFrom(
                               foregroundColor: Colors.white,
                               shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
-                              backgroundColor: Colors.deepPurple
+                              backgroundColor: Colors.black87
                             ),
                             child: const Text('Proceed'),
                           ),
@@ -185,7 +185,7 @@ class _CartRouteState extends State<CartRoute> {
                             style: ElevatedButton.styleFrom(
                               foregroundColor: Colors.white,
                               shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
-                              backgroundColor: Colors.deepPurple
+                              backgroundColor: Colors.black87
                             ),
                             child: const Text('Cancel'),
                           )
@@ -208,7 +208,7 @@ class _CartRouteState extends State<CartRoute> {
                             style: ElevatedButton.styleFrom(
                               foregroundColor: Colors.white,
                               shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
-                              backgroundColor: Colors.deepPurple
+                              backgroundColor: Colors.black87
                             ),
                             child: const Text('Login'),
                           ),
@@ -221,7 +221,7 @@ class _CartRouteState extends State<CartRoute> {
                             style: ElevatedButton.styleFrom(
                               foregroundColor: Colors.white,
                               shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
-                              backgroundColor: Colors.deepPurple
+                              backgroundColor: Colors.black87
                             ),
                             child: const Text('Signup'),
                           )

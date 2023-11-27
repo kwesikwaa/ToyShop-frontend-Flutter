@@ -96,8 +96,8 @@ class _ShopRouteState extends State<ShopRoute> {
                     child: GridView.builder(
                       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                         crossAxisCount: 2,
-                        // crossAxisSpacing: 10,
-                        // mainAxisSpacing: 10,
+                        // crossAxisSpacing: 20,
+                        // mainAxisSpacing: 20,
                         childAspectRatio: 150/195,
                         // mainAxisExtent: 180
                       ),

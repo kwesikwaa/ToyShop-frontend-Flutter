@@ -101,7 +101,7 @@ class _ShopWithSliverRouteState extends State<ShopWithSliverRoute> {
                           insets: const EdgeInsets.symmetric(horizontal: 50)  
                         ),
                         tabs: const [
-                          Tab(child: Text('als', style: TextStyle(color: Colors.black87),)),
+                          Tab(child: Text('all', style: TextStyle(color: Colors.black87),)),
                           Tab(text: 'cars',),
                           Tab(text: 'characters',),
                         ]),
@@ -115,8 +115,8 @@ class _ShopWithSliverRouteState extends State<ShopWithSliverRoute> {
                             child: GridView.builder(
                               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                                 crossAxisCount: 2,
-                                // crossAxisSpacing: 10,
-                                // mainAxisSpacing: 10,
+                                crossAxisSpacing: 5,
+                                mainAxisSpacing: 5,
                                 childAspectRatio: 150/195,
                                 // mainAxisExtent: 180
                               ),

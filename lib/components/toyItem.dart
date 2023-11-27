@@ -88,12 +88,12 @@ class _ToyItemState extends State<ToyItem> {
         height: MediaQuery.of(context).size.height,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10),
-          // color:  Colors.white60
+          color:  Colors.white,
           boxShadow: const [BoxShadow(
-            color: Colors.black12,
+            color: Colors.black26,
             spreadRadius: 2,
             blurRadius: 3,
-            offset: Offset(0, 3)
+            offset: Offset(1, 3)
           )]
         ),
         child: Padding(

@@ -7,6 +7,8 @@ import 'package:toyshop/Models/wishitem.dart';
 class ToyDetail extends StatefulWidget {
   
   final Toy toy;
+  
+
   const ToyDetail({super.key, required this.toy});
 
   @override
@@ -17,6 +19,7 @@ class _ToyDetailState extends State<ToyDetail> {
 
   int qty =1;
 
+  
 
   bool wished(Toy x){
     for(WishItem y in AllToys.wishlist){
@@ -93,7 +96,7 @@ class _ToyDetailState extends State<ToyDetail> {
                 children: [
                  Container(
                     width: double.infinity, 
-                    height: MediaQuery.of(context).size.height*.55,
+                    height: MediaQuery.of(context).size.height*.45,
                     child: Hero(tag:widget.toy.thumbnail,child: Image.asset(widget.toy.thumbnail, fit:BoxFit.cover)),
                   ),
                   const SizedBox(height: 5),
@@ -105,82 +108,94 @@ class _ToyDetailState extends State<ToyDetail> {
                   const SizedBox(height: 5),
                 ],
             ),
-            Container(
-              margin: const EdgeInsets.only(bottom: 50),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  InkWell(
-                    onTap: (){
-                      _addtowishlist();
-                      setState(() {});
-                    },
-                    child: Container(
-                      height: 60,
-                      width: 60,
-                      decoration: BoxDecoration(
-                        color: Colors.black87,
-                        borderRadius: BorderRadius.circular(5)
-                      ),
-                        child: Icon(Icons.favorite, color: wished(widget.toy)?Colors.pink:Colors.white,) ,
-                      
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                InkWell(
+                  onTap: (){
+                    _addtowishlist();
+                    setState(() {});
+                  },
+                  child: Container(
+                    height: 50,
+                    width: 50,
+                    decoration: BoxDecoration(
+                      color: Colors.black87,
+                      borderRadius: BorderRadius.circular(5)
                     ),
+                      child: Icon(Icons.favorite, color: wished(widget.toy)?Colors.pink[700]:Colors.white,) ,
+                    
                   ),
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Text((qty*widget.toy.price).toStringAsFixed(2), style: const TextStyle(fontSize: 25)),
-                      // const SizedBox(height: 2),
-                      Row(
-                        children: [
-                          InkWell(
-                            onTap: (){
-                              setState(() {
-                                if(qty>1){
-                                  qty -=1;
-                                }
-                              });
-                            },
-                            child: const Icon(Icons.remove_circle, color: Colors.black87,size: 35,)
-                            ),
-                          Container(
-                            width: 30,
-                            margin: const EdgeInsets.symmetric(horizontal: 5),
-                            child: Center(child: Text(qty.toString(), style: const TextStyle(fontSize: 20),))
+                ),
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Text((qty*widget.toy.price).toStringAsFixed(2), style: const TextStyle(fontSize: 25)),
+                    // const SizedBox(height: 2),
+                    Row(
+                      children: [
+                        InkWell(
+                          onTap: (){
+                            setState(() {
+                              if(qty>1){
+                                qty -=1;
+                              }
+                            });
+                          },
+                          child: const Icon(Icons.remove_circle, color: Colors.black87,size: 35,)
                           ),
-                          InkWell(
-                            onTap: (){
-                              setState(() {
-                                  qty +=1;
-                              });
-                            }, 
-                            child: const Icon(Icons.add_circle, color: Colors.black87, size: 35,)
-                          ),
-                        ],
-                      ),
+                        Container(
+                          width: 30,
+                          margin: const EdgeInsets.symmetric(horizontal: 5),
+                          child: Center(child: Text(qty.toString(), style: const TextStyle(fontSize: 20),))
+                        ),
+                        InkWell(
+                          onTap: (){
+                            setState(() {
+                                qty +=1;
+                            });
+                          }, 
+                          child: const Icon(Icons.add_circle, color: Colors.black87, size: 35,)
+                        ),
+                      ],
+                    ),
             
-                    ],
-                  ),
-                  InkWell(
-                    onTap: (){
-                      _addtocart();
-                      setState(() {});
-                    },
-                    child: Container(
-                      height: 60,
-                      width: 60,
-                      decoration: BoxDecoration(
-                        color: Colors.black87,
-                        borderRadius: BorderRadius.circular(5)
-                      ),
-                      child: Icon(Icons.shopping_basket, color: carted(widget.toy)?Colors.pink: Colors.white,) ,
-                      ),
+                  ],
+                ),
+                InkWell(
+                  onTap: (){
+                    _addtocart();
+                    setState(() {});
+                  },
+                  child: Container(
+                    height: 50,
+                    width: 50,
+                    decoration: BoxDecoration(
+                      color: Colors.black87,
+                      borderRadius: BorderRadius.circular(5)
                     ),
-                ],
-              ),
+                    child: Icon(Icons.shopping_basket, color: carted(widget.toy)?Colors.pink[700]: Colors.white,) ,
+                    ),
+                  ),
+              ],
+            ), 
+            SizedBox(
+                width: double.infinity,
+                child: ElevatedButton(
+                  onPressed: (){
+                    
+                    Navigator.pop(context);
+                  },
+                  style: ElevatedButton.styleFrom(
+                    padding: const EdgeInsets.symmetric(vertical: 15),
+                    foregroundColor: Colors.white,
+                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
+                    backgroundColor: Colors.black87
+                  ),
+                  child: const Text('Go To Cart'),
+                ),
             ) 
-             
         ]),
       ),
     );

@@ -4,6 +4,7 @@ import 'package:toyshop/Models/example_toylist.dart';
 import 'package:toyshop/routes/cart.dart';
 // import 'package:toyshop/routes/shop.dart';
 import 'package:toyshop/routes/profile.dart';
+import 'package:toyshop/routes/shop.dart';
 import 'package:toyshop/routes/shopwithsliver.dart';
 import 'package:toyshop/routes/wishlist.dart';
 
@@ -112,6 +113,7 @@ class _InitAreaState extends State<InitArea> {
           color: Colors.red,
           height: 79,
           child: BottomNavigationBar(
+            
             iconSize: 35,
             showSelectedLabels: false,    
             showUnselectedLabels: false,

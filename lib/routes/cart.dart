@@ -153,6 +153,7 @@ class _CartRouteState extends State<CartRoute> {
                   
                   style: ElevatedButton.styleFrom(
                     foregroundColor: Colors.white,
+                    padding: const EdgeInsets.symmetric(vertical: 15),
                     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
                     backgroundColor: Colors.black87
                   ),

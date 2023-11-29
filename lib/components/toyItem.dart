@@ -119,7 +119,7 @@ class _ToyItemState extends State<ToyItem> {
                             // force rebuild for icon
                             setState(() {});
                           },
-                          child: Icon(Icons.favorite, color: wished(widget.toy)?Colors.pink:Colors.black38,)),
+                          child: Icon(Icons.favorite, color: wished(widget.toy)?Colors.pink[700]:Colors.black38,)),
                         Text("₵ ${widget.toy.price.toString()}", style: const TextStyle(fontSize:20,fontWeight: FontWeight.bold,color: Colors.black87),),
                         InkWell(
                           onTap: (){
@@ -127,7 +127,7 @@ class _ToyItemState extends State<ToyItem> {
                             // force rebuild for icon
                             setState(() {});
                           },
-                          child: Icon(Icons.shopping_basket_rounded, color: carted(widget.toy)?Colors.pink:Colors.black38,)),
+                          child: Icon(Icons.shopping_basket_rounded, color: carted(widget.toy)?Colors.pink[700]:Colors.black38,)),
                       ]
                       
                     ),

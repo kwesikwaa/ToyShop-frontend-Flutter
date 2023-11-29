@@ -34,11 +34,11 @@ class _ShopWithSliverRouteState extends State<ShopWithSliverRoute> {
               child: TextField(
                 onSubmitted: (value){/*print('-=-=-=-on done triggered-=-=$value');*/},
                 onEditingComplete: (){/*print("--=-=entered-=-=- '${searchCtrl.text}' was searched ");*/},
-                decoration: const InputDecoration(
-                  contentPadding: EdgeInsets.symmetric(horizontal: 5, vertical: 1),
-                  border: OutlineInputBorder(),
+                decoration: InputDecoration(
+                  contentPadding: const EdgeInsets.symmetric(horizontal: 5, vertical: 1),
+                  border: OutlineInputBorder(borderRadius: BorderRadius.circular(20)),
                   hintText: 'Search Toy',
-                  prefixIcon: Icon(Icons.search,size: 30,)
+                  prefixIcon: const Icon(Icons.search,size: 30,)
                 ),
                   
                 controller: searchCtrl,

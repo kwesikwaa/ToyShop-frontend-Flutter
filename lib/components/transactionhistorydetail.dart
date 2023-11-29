@@ -53,9 +53,10 @@ class TransactionHistoryDetail extends StatelessWidget {
                   Navigator.pop(context);
                 },
                 style: ElevatedButton.styleFrom(
+                  padding: const EdgeInsets.symmetric(vertical: 15),
                   foregroundColor: Colors.white,
                   shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
-                  backgroundColor: Colors.deepPurple
+                  backgroundColor: Colors.black87
                 ),
                 child: const Text('Download Receipt')
               ),

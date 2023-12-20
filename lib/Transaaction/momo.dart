@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
 import 'package:toyshop/Models/env.dart';
 
@@ -32,24 +33,24 @@ class Momo{
 
 
 class PayStackAuth{
-  final String authorization_url;
-  final String access_code;
+  final String authorizationUrl;
+  final String accessCode;
   final String reference;
 
-  PayStackAuth({required this.authorization_url, required this.access_code, required this.reference});
+  PayStackAuth({required this.authorizationUrl, required this.accessCode, required this.reference});
 
   factory PayStackAuth.fromJson(Map<String,dynamic> json){
     return PayStackAuth(
-      authorization_url:json['authorization_url'],
-      access_code: json['access_code'],
+      authorizationUrl:json['authorization_url'],
+      accessCode: json['access_code'],
       reference: json['reference']
     );
   }
 
   Map<String, dynamic> toJson(){
     return {
-      'authorization_url':authorization_url,
-      'access_code': access_code,
+      'authorization_url':authorizationUrl,
+      'access_code': accessCode,
       'reference': reference
     };
   }
@@ -60,6 +61,7 @@ Future<PayStackAuth> createTransaction(Momo momo) async{
   final data = momo.toJson();
  
   try{
+    debugPrint('inside createTransaction try');
     final res = await http.post(
       Uri.parse(url),
       headers:{
@@ -68,16 +70,22 @@ Future<PayStackAuth> createTransaction(Momo momo) async{
       },
       body: jsonEncode(data)
     );
-    print('=-=-=-=--=- done resing');
+    
+    debugPrint('=-=-=-=--=- done resing');
+
     if(res.statusCode == 200){
-      print('-=-=-=-= inside 200');
+      
+      debugPrint('-=-=-=-= inside 200');
+      
       final data = jsonDecode(res.body);
       return PayStackAuth.fromJson(data['data']);
     }
     else{
+      debugPrint('inside else 200.. about to throw');
       throw 'Payment Unsuccessful';
     }
   } on Exception{
+    debugPrint('about to throw connection exceptoin');
       throw 'Connection Failed';
   }
 }
@@ -91,12 +99,15 @@ Future<String> initializePayment(String amount) async{
     final price = double.parse(amount);
     final pay = (price*100).round();
     final momo = Momo(amount: pay.toString(), reference: reference, currency: 'GHS', email: email);
-    print('-=-=-=-=-=-=-=- $pay');
+    
+    debugPrint('-=-=-=-=-=-=-=- $pay');
+    debugPrint('about to create tansaction');
     final res = await createTransaction(momo);
-    return res.authorization_url;
+    debugPrint('done ressing');
+    return res.authorizationUrl;
   }catch(e){
-    print('Error initializing payment');
-    print(e);
+    debugPrint('Error initializing payment');
+    debugPrint(e.toString());
     return e.toString(); 
   }
 }

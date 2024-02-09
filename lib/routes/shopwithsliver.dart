@@ -108,31 +108,27 @@ class _ShopWithSliverRouteState extends State<ShopWithSliverRoute> {
                     )
                   ];
                 },
-                body: Expanded(
-                      child: TabBarView(
-                        children: [
-                          Expanded(
-                            child: GridView.builder(
-                              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                                crossAxisCount: 2,
-                                crossAxisSpacing: 5,
-                                mainAxisSpacing: 5,
-                                childAspectRatio: 150/195,
-                                // mainAxisExtent: 180
-                              ),
-                              itemCount: AllToys.stock.length,
-                              scrollDirection: Axis.vertical, 
-                              itemBuilder: (context, index){
-                                final item = AllToys.stock[index];
-                                return ToyItem(toy: item); 
-                              }
-                            ),
-                          ),
-                          const Center(child: Text('cars'),),
-                          const Center(child: Text('character'),)
-                        ],
+                body: TabBarView(
+                  children: [
+                    GridView.builder(
+                      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 2,
+                        crossAxisSpacing: 5,
+                        mainAxisSpacing: 5,
+                        childAspectRatio: 150/195,
+                        // mainAxisExtent: 180
                       ),
+                      itemCount: AllToys.stock.length,
+                      scrollDirection: Axis.vertical, 
+                      itemBuilder: (context, index){
+                        final item = AllToys.stock[index];
+                        return ToyItem(toy: item); 
+                      }
                     ),
+                    const Center(child: Text('cars'),),
+                    const Center(child: Text('character'),)
+                  ],
+                ),
               ),
             ),
           ],

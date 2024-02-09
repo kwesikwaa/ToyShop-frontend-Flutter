@@ -92,22 +92,20 @@ class _ShopRouteState extends State<ShopRoute> {
             Expanded(
               child: TabBarView(
                 children: [
-                  Expanded(
-                    child: GridView.builder(
-                      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 2,
-                        // crossAxisSpacing: 20,
-                        // mainAxisSpacing: 20,
-                        childAspectRatio: 150/195,
-                        // mainAxisExtent: 180
-                      ),
-                      itemCount: AllToys.stock.length,
-                      scrollDirection: Axis.vertical, 
-                      itemBuilder: (context, index){
-                        final item = AllToys.stock[index];
-                        return ToyItem(toy: item); 
-                      }
+                  GridView.builder(
+                    gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2,
+                      // crossAxisSpacing: 20,
+                      // mainAxisSpacing: 20,
+                      childAspectRatio: 150/195,
+                      // mainAxisExtent: 180
                     ),
+                    itemCount: AllToys.stock.length,
+                    scrollDirection: Axis.vertical, 
+                    itemBuilder: (context, index){
+                      final item = AllToys.stock[index];
+                      return ToyItem(toy: item); 
+                    }
                   ),
                   const Center(child: Text('cars'),),
                   const Center(child: Text('character'),)

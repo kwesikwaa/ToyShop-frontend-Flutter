@@ -46,11 +46,13 @@ class _WishlistRouteState extends State<WishlistRoute> {
     if(exists){
       if(AllToys.cartlist[existsAtIndex].qty>movethis.qty){
         AllToys.wishlist.removeAt(index);
+        AllToys.wishtotal.value = AllToys.wishlist.length;
         _shortnotifier('Item already exists in the cart and will now be removed form wishlist');
       }
       else{
         AllToys.cartlist[existsAtIndex].qty = qty;
         AllToys.wishlist.removeAt(index);
+        AllToys.wishtotal.value = AllToys.wishlist.length;
         _shortnotifier('Item already exists in the cart but quantity update has been made');
       }
       
@@ -58,6 +60,7 @@ class _WishlistRouteState extends State<WishlistRoute> {
     else{
       AllToys.cartlist.add(createnew);
       AllToys.wishlist.removeAt(index);
+      AllToys.wishtotal.value = AllToys.wishlist.length;
       _shortnotifier('Successfully added to cart!');
 
     }

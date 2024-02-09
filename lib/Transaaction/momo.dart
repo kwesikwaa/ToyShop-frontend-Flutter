@@ -81,11 +81,11 @@ Future<PayStackAuth> createTransaction(Momo momo) async{
       return PayStackAuth.fromJson(data['data']);
     }
     else{
-      debugPrint('inside else 200.. about to throw');
-      throw 'Payment Unsuccessful';
+      debugPrint('connection successful but a ${res.statusCode}');
+      throw res.body;
     }
   } on Exception{
-    debugPrint('about to throw connection exceptoin');
+    debugPrint('inside exception now');
       throw 'Connection Failed';
   }
 }
@@ -95,7 +95,7 @@ Future<String> initializePayment(String amount) async{
   
   try{
     String email = 'example@gmail.com';
-    String reference = 'somereference';
+    String reference = DateTime.now().toString();
     final price = double.parse(amount);
     final pay = (price*100).round();
     final momo = Momo(amount: pay.toString(), reference: reference, currency: 'GHS', email: email);

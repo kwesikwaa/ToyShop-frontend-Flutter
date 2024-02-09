@@ -158,7 +158,8 @@ class _CartRouteState extends State<CartRoute> {
                     backgroundColor: Colors.black87
                   ),
                   onPressed: (){
-                  final total = gettotal();
+                  final total = (double.parse(gettotal()) + 10.00).toStringAsFixed(2);
+                  debugPrint("/////// total to be made is $total");
                   // may have to come back to this
                   if(AllToys.loggedin.value){
                     showDialog(context: context, builder: (builder){

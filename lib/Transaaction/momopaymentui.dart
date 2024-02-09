@@ -44,7 +44,7 @@ class _MomoPaymentUIState extends State<MomoPaymentUI> {
                     // Update loading bar.
                   },
                   onPageStarted: (String url) {},
-                  onPageFinished: (String url) {},
+                  onPageFinished: (String url) {debugPrint("do ****************** one=======");},
                   onWebResourceError: (WebResourceError error) {},
                   onNavigationRequest: (NavigationRequest request) {
                     if (request.url.startsWith('https://kwesikwaa.com/')) {

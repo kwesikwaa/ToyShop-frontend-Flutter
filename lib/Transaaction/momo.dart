@@ -6,16 +6,16 @@ import 'package:toyshop/Models/env.dart';
 
 class Momo{
   final String amount;
-  final String reference;
+  // final String reference;
   final String currency;
   final String email;
 
-  Momo({required this.amount, required this.reference, required this.currency, required this.email});
+  Momo({required this.amount,  required this.currency, required this.email});
 
   factory Momo.fromJson(Map<String,dynamic> json){
     return Momo(
       amount: json['amount'],
-      reference: json['reference'],
+      // reference: json['reference'],
       currency: json['currency'],
       email: json['email']
     );
@@ -24,7 +24,7 @@ class Momo{
   Map<String,dynamic> toJson(){
     return{
       'amount':amount,
-      'reference':reference,
+      // 'reference':reference,
       'currency':currency,
       'email':email
     };
@@ -59,6 +59,8 @@ class PayStackAuth{
 Future<PayStackAuth> createTransaction(Momo momo) async{
   const String url = 'https://api.paystack.co/transaction/initialize';
   final data = momo.toJson();
+
+  // debugPrint("ref is ${momo.reference}");
  
   try{
     debugPrint('inside createTransaction try');
@@ -95,10 +97,10 @@ Future<String> initializePayment(String amount) async{
   
   try{
     String email = 'example@gmail.com';
-    String reference = DateTime.now().toString();
+    // String reference = 'anodanewrisadinewreff';
     final price = double.parse(amount);
     final pay = (price*100).round();
-    final momo = Momo(amount: pay.toString(), reference: reference, currency: 'GHS', email: email);
+    final momo = Momo(amount: pay.toString(),  currency: 'GHS', email: email);
     
     debugPrint('-=-=-=-=-=-=-=- $pay');
     debugPrint('about to create tansaction');

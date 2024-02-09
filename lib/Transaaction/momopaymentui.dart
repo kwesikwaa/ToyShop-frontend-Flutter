@@ -47,7 +47,7 @@ class _MomoPaymentUIState extends State<MomoPaymentUI> {
                   onPageFinished: (String url) {},
                   onWebResourceError: (WebResourceError error) {},
                   onNavigationRequest: (NavigationRequest request) {
-                    if (request.url.startsWith('https://www.youtube.com/')) {
+                    if (request.url.startsWith('https://kwesikwaa.com/')) {
                       return NavigationDecision.prevent;
                     }
                     return NavigationDecision.navigate;

@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_paystack/flutter_paystack.dart';
 
 
-
 class Payment{
   final String amount;
   final PaystackPlugin plugin;

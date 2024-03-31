@@ -27,54 +27,57 @@ class _MomoPaymentUIState extends State<MomoPaymentUI> {
 
   @override
   Widget build(BuildContext context) {
+    Align(alignment: AlignmentDirectional.,)
     return Scaffold(
-      body: FutureBuilder(
-        future: initializePayment(widget.amount), 
-        builder: (context,snapshot){
-        if(snapshot.hasData){
-          final url = snapshot.data;
-          return WebViewWidget(
-            controller:
-              WebViewController()
-              ..setJavaScriptMode(JavaScriptMode.unrestricted)
-              ..setBackgroundColor(const Color(0x00000000))
-              ..setNavigationDelegate(
-                NavigationDelegate(
-                  onProgress: (int progress) {
-                    // Update loading bar.
-                  },
-                  onPageStarted: (String url) {},
-                  onPageFinished: (String url) {debugPrint("do ****************** one=======");},
-                  onWebResourceError: (WebResourceError error) {},
-                  onNavigationRequest: (NavigationRequest request) {
-                    if (request.url.startsWith('https://kwesikwaa.com/')) {
-                      return NavigationDecision.prevent;
-                    }
-                    return NavigationDecision.navigate;
-                  },
-                ),
-              )
-              ..loadRequest(Uri.parse(url!))
-          );
-        }
-        else{
-          return const Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                SizedBox(
-                  width: 50,
-                  height: 50,
-                  child: CircularProgressIndicator()
-                ),
-                SizedBox(height: 10,),
-                Text('Making Payment Arrangement...', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),)
-              ],
-            ),
-          );
-        }
-      }),
+      body: SafeArea(
+        child: FutureBuilder(
+          future: initializePayment(widget.amount), 
+          builder: (context,snapshot){
+          if(snapshot.hasData){
+            final url = snapshot.data;
+            return WebViewWidget(
+              controller:
+                WebViewController()
+                ..setJavaScriptMode(JavaScriptMode.unrestricted)
+                ..setBackgroundColor(const Color(0x00000000))
+                ..setNavigationDelegate(
+                  NavigationDelegate(
+                    onProgress: (int progress) {
+                      // Update loading bar.
+                    },
+                    onPageStarted: (String url) {},
+                    onPageFinished: (String url) {debugPrint("do ****************** one=======");},
+                    onWebResourceError: (WebResourceError error) {},
+                    onNavigationRequest: (NavigationRequest request) {
+                      if (request.url.startsWith('https://kwesikwaa.com/')) {
+                        return NavigationDecision.prevent;
+                      }
+                      return NavigationDecision.navigate;
+                    },
+                  ),
+                )
+                ..loadRequest(Uri.parse(url!))
+            );
+          }
+          else{
+            return const Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  SizedBox(
+                    width: 50,
+                    height: 50,
+                    child: CircularProgressIndicator()
+                  ),
+                  SizedBox(height: 10,),
+                  Text('Making Payment Arrangement...', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),)
+                ],
+              ),
+            );
+          }
+        }),
+      ),
     );
   }
 }
